@@ -1,0 +1,6 @@
+@RoboticaSustentavelAPI_HostAddress = http://localhost:5044
+
+GET {{RoboticaSustentavelAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
