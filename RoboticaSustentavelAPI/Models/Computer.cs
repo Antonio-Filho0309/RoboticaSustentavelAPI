@@ -29,4 +29,3 @@ namespace RoboticaSustentavelAPI.Models
         public ICollection<ItemDonation> ItensDonation { get; set; } = new List<ItemDonation>();
     }
 }
-
