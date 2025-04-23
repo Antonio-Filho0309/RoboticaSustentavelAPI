@@ -12,8 +12,6 @@ namespace RoboticaSustentavelAPI.Mappings
             CreateMap<Computer, ComputerDto>().ReverseMap();
             CreateMap<Computer, CreateComputerDto>().ReverseMap();
             CreateMap<Computer, UpdateComputerDto>().ReverseMap();
-
-
         }
     }
 }

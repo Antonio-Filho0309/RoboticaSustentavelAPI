@@ -1,5 +1,4 @@
-﻿using ProjetoMundoReceitas.Data;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using RoboticaSustentavelAPI;
 
 namespace ProjetoMundoReceitas.Service
