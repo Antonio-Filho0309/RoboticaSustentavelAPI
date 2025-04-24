@@ -13,6 +13,7 @@ namespace RoboticaSustentavelAPI.Models
             Ram = ram;
             Storage = storage;
             CPU = cPU;
+            Status = 0;
             Quantity = quantity;
         }
 

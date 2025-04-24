@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjetoLivrariaAPI.Models.FilterDb;
 using RoboticaSustentavelAPI.Models.Dto.Computer;
 using RoboticaSustentavelAPI.Services.Interfaces;
 using System.Net;
@@ -40,6 +41,20 @@ namespace RoboticaSustentavelAPI.Controllers
             return NotFound(result);
         }
 
+
+        /// <summary>
+        /// método para paginação
+        /// </summary>
+        [HttpGet]
+        [Route("Paged")]
+        public async Task<ActionResult> GetByIdAsync([FromQuery] Filter computerFilter)
+        {
+            var result = await _computerService.GetPagedAsync(computerFilter);
+            if (result.StatusCode == HttpStatusCode.OK)
+                return Ok(result);
+            return NotFound(result);
+        }
+
         /// <summary>
         /// Cria um novo computador
         /// </summary>
@@ -56,9 +71,9 @@ namespace RoboticaSustentavelAPI.Controllers
         /// Atualiza um computador existente
         /// </summary>
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put([FromBody] UpdateComputerDto updateComputerDto)
+        public async Task<ActionResult> Put(int id,[FromBody] UpdateComputerDto updateComputerDto)
         {
-            var result = await _computerService.Update(updateComputerDto);
+            var result = await _computerService.Update(id, updateComputerDto);
             if (result.StatusCode == HttpStatusCode.OK)
                 return Ok(result);
             if (result.StatusCode == HttpStatusCode.NotFound)

@@ -4,6 +4,6 @@ namespace ProjetoLivrariaAPI.Models.FilterDb
 {
     public class Filter : PagedBaseRequest
     {
-        public string Search { get; set; }
+        public string? Search { get; set; }
     }
 }

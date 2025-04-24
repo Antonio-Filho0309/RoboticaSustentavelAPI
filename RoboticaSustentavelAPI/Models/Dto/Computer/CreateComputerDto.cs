@@ -1,4 +1,6 @@
-﻿namespace RoboticaSustentavelAPI.Models.Dto.Computer
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace RoboticaSustentavelAPI.Models.Dto.Computer
 {
     public class CreateComputerDto
     {
@@ -7,5 +9,6 @@
         public string Storage { get; set; }
         public string CPU { get; set; }
         public int Quantity { get; set; }
+
     }
 }

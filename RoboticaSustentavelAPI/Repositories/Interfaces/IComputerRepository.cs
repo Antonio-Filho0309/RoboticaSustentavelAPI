@@ -9,11 +9,9 @@ namespace RoboticaSustentavelAPI.Repositories.Interfaces
         Task<Computer> Add(Computer computer);
         Task Update(Computer computer);
         Task Delete(Computer computer);
-
+        Task<bool> ExistByUniqueKeyAsync(string uniqueKey);
         Task<ICollection<Computer>> GetAllComputers();
-
         Task<Computer> GetComputerById(int computerId);
-
         Task<PagedBaseReponse<Computer>> GetAllComputerPaged(Filter computerFilter);
     }
 }

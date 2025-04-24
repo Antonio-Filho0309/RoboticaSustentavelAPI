@@ -67,5 +67,15 @@ namespace ProjetoLivrariaAPI.Repositories
             return await PagedBaseResponseHelper.GetResponseAsync<PagedBaseReponse<Computer>, Computer>(computer, computerFilter);
         }
 
+
+
+        public async Task<bool> ExistByUniqueKeyAsync(string uniqueKey)
+        {
+            var computers = await _context.Computers
+               .ToListAsync();
+
+            return computers.Any(c =>
+                $"{c.Brand}-{c.Ram}-{c.Storage}-{c.CPU}".ToLower() == uniqueKey);
+        }
     }
 }
