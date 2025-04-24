@@ -2,7 +2,6 @@
 {
     public class CreateComputerDto
     {
-        public int Id { get; set; }
         public string Brand { get; set; }
         public string Ram { get; set; }
         public string Storage { get; set; }

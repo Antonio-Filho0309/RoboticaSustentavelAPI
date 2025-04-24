@@ -50,11 +50,11 @@ namespace ProjetoLivrariaAPI.Data
 
 
             builder.Entity<ItemDonation>()
-                .HasData(new ItemDonation(1, 1, 1, 2), // 2 unidades do Computer 1 na Donation 1
-                          new ItemDonation(2, 2, 1, 1), // 1 unidade do Computer 2 na Donation 1
-                          new ItemDonation(3, 3, 2, 3), // 3 unidades do Computer 3 na Donation 2
-                          new ItemDonation(4, 4, 3, 1), // 1 unidade do Computer 4 na Donation 3
-                          new ItemDonation(5, 5, 3, 2)  // 2 unidades do Computer 5 na Donation 3
+                .HasData(new ItemDonation(1, 1, 1, 2), 
+                          new ItemDonation(2, 2, 1, 1),
+                          new ItemDonation(3, 3, 2, 3),
+                          new ItemDonation(4, 4, 3, 1),
+                          new ItemDonation(5, 5, 3, 2)  
                 );
 
             builder.Entity<Sale>()
@@ -65,9 +65,9 @@ namespace ProjetoLivrariaAPI.Data
 
 
             builder.Entity<ItemSale>()
-                .HasData(new ItemSale(1, 1, 1, 1), // 1 unidade do Computer 1 na Sale 1
-                          new ItemSale(2, 2, 1, 1), // 1 unidade do Computer 2 na Sale 1
-                          new ItemSale(3, 3, 2, 1)  // 1 unidade do Computer 3 na Sale 2
+                .HasData(new ItemSale(1, 1, 1, 1), 
+                          new ItemSale(2, 2, 1, 1), 
+                          new ItemSale(3, 3, 2, 1)  
                 );
         }
 

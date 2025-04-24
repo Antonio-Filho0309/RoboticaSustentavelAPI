@@ -1,49 +1,61 @@
-﻿using FluentValidation.Results;
-using RoboticaSustentavelAPI;
+﻿using System.Net;
+using System.Text.Json.Serialization;
+using FluentValidation.Results;
 
-namespace ProjetoMundoReceitas.Service
+namespace Locadora.API.Services
 {
     public class ResultService
     {
-        public bool IsSucess { get; set; }
-        public string Message { get; set; }
-        public ICollection<ErrorValidation> Errors { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string[]? Message { get; init; }
+        public HttpStatusCode StatusCode { get; set; }
 
-        public static ResultService RequestError(string message, ValidationResult validationResult)
 
+
+        public static ResultService BadRequest(ValidationResult validationResult)
         {
             return new ResultService
             {
-                IsSucess = false,
-                Message = message,
-                Errors = validationResult.Errors.Select(x => new ErrorValidation { Field = x.PropertyName, Message = x.ErrorMessage }).ToList()
+                Message = validationResult.Errors.Select(x => x.ErrorMessage).ToArray(),
+                StatusCode = HttpStatusCode.BadRequest,
             };
         }
+        public static ResultService BadRequest(string message) => new() { StatusCode = HttpStatusCode.BadRequest, Message = new string[] { message } };
+        public static ResultService NotFound(string message) => new() { StatusCode = HttpStatusCode.OK, Message = new string[] { message } };
+        public static ResultService<T> NotFound<T>(string message) => new() { StatusCode = HttpStatusCode.OK, Message = new string[] { message } };
 
-        public static ResultService<T> RequestError<T>(string message, ValidationResult validationResult)
+        public static ResultService Ok(string message) => new() { StatusCode = HttpStatusCode.OK, Message = new string[] { message } };
+        public static ResultService<T> Ok<T>(T data)
         {
             return new ResultService<T>
             {
-                IsSucess = false,
-                Message = message,
-                Errors = validationResult.Errors.Select(x => new ErrorValidation { Field = x.PropertyName, Message = x.ErrorMessage }).ToList()
+                Data = data,
+                StatusCode = HttpStatusCode.OK
             };
         }
-
-
-        public static ResultService Fail(string message) => new ResultService { IsSucess = false, Message = message };
-
-        public static ResultService<T> Fail<T>(string message) => new ResultService<T> { IsSucess = false, Message = message };
-
-        public static ResultService Ok(string message) => new ResultService { IsSucess = true, Message = message };
-
-        public static ResultService<T> Ok<T>(T data) => new ResultService<T> { IsSucess = true, Data = data };
-
+        public static ResultService<T> OkPaged<T>(T data, int totalRegisters, int totalPages, int pageNumber)
+        {
+            return new ResultService<T>
+            {
+                Data = data,
+                TotalRegisters = totalRegisters,
+                TotalPages = totalPages,
+                PageNumber = pageNumber,
+                StatusCode = HttpStatusCode.OK
+            };
+        }
     }
 
     public class ResultService<T> : ResultService
     {
-        public T Data { get; set; }
-
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public T? Data { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public int? TotalRegisters { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public int? TotalPages { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public int? PageNumber { get; set; }
     }
+
 }

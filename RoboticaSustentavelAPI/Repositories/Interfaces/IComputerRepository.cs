@@ -14,6 +14,6 @@ namespace RoboticaSustentavelAPI.Repositories.Interfaces
 
         Task<Computer> GetComputerById(int computerId);
 
-        Task<PagedBaseReponse<Computer>> GetAllComputerPaged(Filter publisherFilter);
+        Task<PagedBaseReponse<Computer>> GetAllComputerPaged(Filter computerFilter);
     }
 }
