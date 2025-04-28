@@ -31,10 +31,13 @@ namespace RoboticaSustentavelAPI.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Brand")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("CPU")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Processor")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -61,46 +64,55 @@ namespace RoboticaSustentavelAPI.Migrations
                         {
                             Id = 1,
                             Brand = "Dell",
-                            CPU = "Intel i7",
+                            CPU = "Intel i7-1165G7",
+                            Processor = "16GB",
                             Quantity = 10,
-                            Ram = "16GB",
-                            Storage = "512GB SSD"
+                            Ram = "512GB SSD",
+                            Status = 0,
+                            Storage = "Intel i7"
                         },
                         new
                         {
                             Id = 2,
                             Brand = "HP",
-                            CPU = "Intel i5",
+                            CPU = "Intel i5-10400",
+                            Processor = "8GB",
                             Quantity = 5,
-                            Ram = "8GB",
-                            Storage = "1TB HDD"
+                            Ram = "1TB HDD",
+                            Status = 0,
+                            Storage = "Intel i5"
                         },
                         new
                         {
                             Id = 3,
                             Brand = "Lenovo",
-                            CPU = "Intel i9",
+                            CPU = "Intel i9-11900K",
+                            Processor = "32GB",
                             Quantity = 3,
-                            Ram = "32GB",
-                            Storage = "1TB SSD"
+                            Ram = "1TB SSD",
+                            Status = 0,
+                            Storage = "Intel i9"
                         },
                         new
                         {
                             Id = 4,
-                            Brand = "Acer",
-                            CPU = "AMD Ryzen 5",
+                            CPU = "Ryzen 5 5600H",
+                            Processor = "16GB",
                             Quantity = 8,
-                            Ram = "16GB",
-                            Storage = "256GB SSD"
+                            Ram = "256GB SSD",
+                            Status = 0,
+                            Storage = "AMD Ryzen 5"
                         },
                         new
                         {
                             Id = 5,
                             Brand = "Asus",
-                            CPU = "AMD Ryzen 7",
+                            CPU = "Ryzen 7 5800H",
+                            Processor = "32GB",
                             Quantity = 4,
-                            Ram = "32GB",
-                            Storage = "2TB HDD"
+                            Ram = "2TB HDD",
+                            Status = 0,
+                            Storage = "AMD Ryzen 7"
                         });
                 });
 

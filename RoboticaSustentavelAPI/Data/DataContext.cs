@@ -33,13 +33,13 @@ namespace ProjetoLivrariaAPI.Data
                 .HasColumnType("timestamp");
 
             builder.Entity<Computer>()
-
-                .HasData(new Computer(1, "Dell", "16GB", "512GB SSD", "Intel i7", 10),
-            new Computer(2, "HP", "8GB", "1TB HDD", "Intel i5", 5),
-            new Computer(3, "Lenovo", "32GB", "1TB SSD", "Intel i9", 3),
-            new Computer(4, "Acer", "16GB", "256GB SSD", "AMD Ryzen 5", 8),
-            new Computer(5, "Asus", "32GB", "2TB HDD", "AMD Ryzen 7", 4)
-                );
+               .HasData(
+                   new Computer(1, "Dell", "16GB", "512GB SSD", "Intel i7", "Intel i7-1165G7", 10),
+                   new Computer(2, "HP", "8GB", "1TB HDD", "Intel i5", "Intel i5-10400", 5),
+                   new Computer(3, "Lenovo", "32GB", "1TB SSD", "Intel i9", "Intel i9-11900K", 3),
+                   new Computer(4, null, "16GB", "256GB SSD", "AMD Ryzen 5", "Ryzen 5 5600H", 8),
+                   new Computer(5, "Asus", "32GB", "2TB HDD", "AMD Ryzen 7", "Ryzen 7 5800H", 4)
+               );
 
             builder.Entity<Donation>()
       .HasData(

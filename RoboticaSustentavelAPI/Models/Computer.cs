@@ -6,10 +6,11 @@ namespace RoboticaSustentavelAPI.Models
     {
         public Computer() { }
 
-        public Computer(int id, string brand,string ram, string storage, string cPU, int quantity)
+        public Computer(int id, string brand,string processor,string ram, string storage, string cPU, int quantity)
         {
             Id = id;
             Brand = brand;
+            Processor = processor;
             Ram = ram;
             Storage = storage;
             CPU = cPU;
@@ -18,7 +19,8 @@ namespace RoboticaSustentavelAPI.Models
         }
 
         public int Id { get; set; }
-        public string Brand { get; set; }
+        public string? Brand { get; set; }
+        public string Processor { get; set; }
         public string Ram { get; set; }
         public string Storage { get; set; }
         public string CPU { get; set; }
