@@ -2,6 +2,7 @@ using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 using ProjetoLivrariaAPI.Data;
 using ProjetoLivrariaAPI.Repositories;
+using RoboticaSustentavelAPI.Repositories;
 using RoboticaSustentavelAPI.Repositories.Interfaces;
 using RoboticaSustentavelAPI.Services;
 using RoboticaSustentavelAPI.Services.Interfaces;
@@ -20,9 +21,12 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //Repositorio
 builder.Services.AddScoped<IComputerRepository,ComputerRepository>();
+builder.Services.AddScoped<IItemDonationRepository, ItemDonationRepository>();
 
 //Service
 builder.Services.AddScoped<IComputerService, ComputerService>();
+builder.Services.AddScoped<IItemDonationService, ItemDonationService>();
+
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {

@@ -48,13 +48,13 @@ namespace RoboticaSustentavelAPI.Services
             var computer = _mapper.Map<Computer>(createComputerDto);
 
             await _computerRepository.Add(computer);
-            return ResultService.Ok("Computador registrado com sucesso");
+            return ResultService.Ok("Computador registrado com sucesso!");
         }
         public async Task<ResultService<ComputerDto>> GetById(int id)
         {
             var computer = await _computerRepository.GetComputerById(id);
             if (computer == null)
-                return ResultService.NotFound<ComputerDto>("Computador não encontrado");
+                return ResultService.NotFound<ComputerDto>("Computador não encontrado!");
 
             return ResultService.Ok(_mapper.Map<ComputerDto>(computer));
         }
