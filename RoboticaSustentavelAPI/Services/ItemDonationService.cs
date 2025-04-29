@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Locadora.API.Services;
 using ProjetoLivrariaAPI.Models.FilterDb;
-using ProjetoLivrariaAPI.Repositories;
-using RoboticaSustentavelAPI.Models.Dto.Computer;
 using RoboticaSustentavelAPI.Models;
 using RoboticaSustentavelAPI.Models.Dto.ItemDonation;
 using RoboticaSustentavelAPI.Repositories.Interfaces;
@@ -17,11 +15,15 @@ namespace RoboticaSustentavelAPI.Services
     {
         private readonly IMapper _mapper;
         private readonly IItemDonationRepository _itemDonationRepository;
+        private readonly IDonationRepository _donationRepository;
+        private readonly IComputerRepository _computerRepository;
 
-        public ItemDonationService(IMapper mapper, IItemDonationRepository itemDonationRepository)
+        public ItemDonationService(IMapper mapper, IItemDonationRepository itemDonationRepository, IDonationRepository donationRepository, IComputerRepository computerRepository)
         {
             _mapper = mapper;
             _itemDonationRepository = itemDonationRepository;
+            _donationRepository = donationRepository;
+            _computerRepository = computerRepository;
         }
         public async Task<ResultService> Create(CreateItemDonationDto createItemDonationDto)
         {
@@ -32,8 +34,22 @@ namespace RoboticaSustentavelAPI.Services
             if (!result.IsValid)
                 return ResultService.BadRequest(result);
 
-            var item = _mapper.Map<ItemDonation>(createItemDonationDto);
+            var donation = new Donation
+            {
+                DateDonation = DateTime.Now
+            };
+            
 
+            var item = _mapper.Map<ItemDonation>(createItemDonationDto);
+            item.DonationId = donation.Id;
+            item.Donation = donation;
+
+            var computer = await _computerRepository.GetComputerById(item.ComputerId);
+            if(computer == null)
+                return ResultService.BadRequest("Computador náo encontrado");
+            computer.Status = Models.Enum.StatusComputer.doado;
+                  if(computer.Status == Models.Enum.StatusComputer.vendido)
+                return ResultService.BadRequest("Computador não pode ser vendido");
             await _itemDonationRepository.Add(item);
             return ResultService.Ok("Doação Realizada com sucesso!");
         }
