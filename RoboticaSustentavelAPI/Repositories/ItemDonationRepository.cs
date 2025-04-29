@@ -25,18 +25,18 @@ namespace RoboticaSustentavelAPI.Repositories
 
         public async Task<ICollection<ItemDonation>> GetAllItens()
         {
-            return await _context.ItemDonations.Include(i => i.Computer).OrderBy(i => i.Id)
+            return await _context.ItemDonations.Include(i => i.Donation).Include(i => i.Computer).OrderBy(i => i.Id)
                .ToListAsync();
         }
 
         public async Task<ItemDonation> GetItemById(int itemId)
         {
-            return await _context.ItemDonations.Include(i => i.Computer).FirstOrDefaultAsync(i => i.Id == itemId);
+            return await _context.ItemDonations.Include(i => i.Donation).Include(i => i.Computer).FirstOrDefaultAsync(i => i.Id == itemId);
         }
 
         public async Task<PagedBaseReponse<ItemDonation>> GetAllItensPaged(Filter itemFilter)
         {
-            var itemDonation = _context.ItemDonations.Include(i => i.Computer).AsQueryable();
+            var itemDonation = _context.ItemDonations.Include(i => i.Donation).Include(i => i.Computer).AsQueryable();
             if (!string.IsNullOrEmpty(itemFilter.Search))
             {
                 var filter = itemFilter.Search.ToLower();

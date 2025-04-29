@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using RoboticaSustentavelAPI.Models;
 using RoboticaSustentavelAPI.Models.Dto.Computer;
+using RoboticaSustentavelAPI.Models.Dto.Donation;
 using RoboticaSustentavelAPI.Models.Dto.ItemDonation;
 
 namespace RoboticaSustentavelAPI.Mappings
@@ -19,6 +20,8 @@ namespace RoboticaSustentavelAPI.Mappings
             CreateMap<ItemDonation, ItemDonationDto>().ReverseMap();
             CreateMap<ItemDonation, CreateItemDonationDto>().ReverseMap();
 
+            //Donation
+            CreateMap<Donation, DonationDto>().ReverseMap();
         }
     }
 }

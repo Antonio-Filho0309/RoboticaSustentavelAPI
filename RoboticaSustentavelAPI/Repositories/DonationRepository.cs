@@ -16,13 +16,6 @@ namespace RoboticaSustentavelAPI.Repositories
             _context = context;
         }
 
-        public async Task<Donation> Add(Donation donation)
-        {
-            _context.Add(donation);
-            await _context.SaveChangesAsync();
-            return donation;
-        }
-
         public  async Task<PagedBaseReponse<Donation>> GetAllDonationPaged(Filter donationFilter)
         {
             var donation = _context.Donations.AsQueryable();

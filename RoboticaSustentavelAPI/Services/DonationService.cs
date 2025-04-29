@@ -6,6 +6,7 @@ using ProjetoLivrariaAPI.Models.FilterDb;
 using ProjetoLivrariaAPI.Repositories;
 using RoboticaSustentavelAPI.Models;
 using RoboticaSustentavelAPI.Models.Dto.Computer;
+using RoboticaSustentavelAPI.Models.Dto.Donation;
 using RoboticaSustentavelAPI.Repositories.Interfaces;
 using RoboticaSustentavelAPI.Services.Interfaces;
 
@@ -15,44 +16,35 @@ namespace RoboticaSustentavelAPI.Services
     {
         private readonly IMapper _mapper;
         private readonly IDonationRepository _donationRepository;
-        public async Task<ResultService> Create(Donation donation)
+
+        public DonationService(IMapper mapper, IDonationRepository donationRepository)
         {
-            if (donation == null)
-                return ResultService.BadRequest("Objeto deve ser informado!");
-
-            var donationMap = _mapper.Map<Donation>(donation);
-
-            var createdDonation = await _donationRepository.Add(donationMap);
-
-            if (createdDonation == null)
-                return ResultService.BadRequest("Erro ao criar a doação.");
-
-            return ResultService.Ok(createdDonation);
-
+            _mapper = mapper;
+            _donationRepository = donationRepository;
         }
 
-        public async Task<ResultService<ICollection<Donation>>> Get()
+        public async Task<ResultService<ICollection<DonationDto>>> Get()
         {
             var donations = await _donationRepository.GetAllDonations();
-            return ResultService.Ok(_mapper.Map<ICollection<Donation>>(donations));
+            return ResultService.Ok(_mapper.Map<ICollection<DonationDto>>(donations));
         }
 
-        public async Task<ResultService<Donation>> GetById(int id)
+        public async Task<ResultService<DonationDto>> GetById(int id)
         {
             var donation = await _donationRepository.GetDonationById(id);
             if (donation == null)
-                return ResultService.NotFound<Donation>("Doação não encontrado!");
+                return ResultService.NotFound<DonationDto>("Doação não encontrada!");
 
-            return ResultService.Ok(_mapper.Map<Donation>(donation));
+            return ResultService.Ok(_mapper.Map<DonationDto>(donation));
         }
 
-        public async Task<ResultService<List<Donation>>> GetPagedAsync(Filter donationFilter)
+        public async Task<ResultService<List<DonationDto>>> GetPagedAsync(Filter donationFilter)
         {
             var donation = await _donationRepository.GetAllDonationPaged(donationFilter);
-            var result = new PagedBaseResponseDto<Donation>(donation.TotalRegisters, donation.TotalPages, donation.PageNumber, _mapper.Map<List<Donation>>(donation.Data));
+            var result = new PagedBaseResponseDto<DonationDto>(donation.TotalRegisters, donation.TotalPages, donation.PageNumber, _mapper.Map<List<DonationDto>>(donation.Data));
 
             if (result.Data.Count == 0)
-                return ResultService.NotFound<List<Donation>>("Nenhum Registro Encontrado");
+                return ResultService.NotFound<List<DonationDto>>("Nenhum Registro Encontrado");
 
             return ResultService.OkPaged(result.Data, result.TotalRegisters, result.TotalPages, result.PageNumber);
         }
