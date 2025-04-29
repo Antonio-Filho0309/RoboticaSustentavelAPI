@@ -22,10 +22,12 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //Repositorio
 builder.Services.AddScoped<IComputerRepository,ComputerRepository>();
 builder.Services.AddScoped<IItemDonationRepository, ItemDonationRepository>();
+builder.Services.AddScoped<IDonationRepository, DonationRepository>();
 
 //Service
 builder.Services.AddScoped<IComputerService, ComputerService>();
 builder.Services.AddScoped<IItemDonationService, ItemDonationService>();
+builder.Services.AddScoped<IDonationService, DonationService>();
 
 
 builder.Services.AddControllers().AddJsonOptions(options =>

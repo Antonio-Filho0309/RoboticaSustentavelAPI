@@ -166,6 +166,9 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ComputerId");
@@ -180,35 +183,40 @@ namespace RoboticaSustentavelAPI.Migrations
                             Id = 1,
                             ComputerId = 1,
                             DonationId = 1,
-                            Quantity = 2
+                            Quantity = 2,
+                            Status = 1
                         },
                         new
                         {
                             Id = 2,
                             ComputerId = 2,
                             DonationId = 1,
-                            Quantity = 1
+                            Quantity = 1,
+                            Status = 1
                         },
                         new
                         {
                             Id = 3,
                             ComputerId = 3,
                             DonationId = 2,
-                            Quantity = 3
+                            Quantity = 3,
+                            Status = 1
                         },
                         new
                         {
                             Id = 4,
                             ComputerId = 4,
                             DonationId = 3,
-                            Quantity = 1
+                            Quantity = 1,
+                            Status = 1
                         },
                         new
                         {
                             Id = 5,
                             ComputerId = 5,
                             DonationId = 3,
-                            Quantity = 2
+                            Quantity = 2,
+                            Status = 1
                         });
                 });
 

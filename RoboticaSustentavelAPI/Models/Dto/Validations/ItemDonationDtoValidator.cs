@@ -15,9 +15,6 @@ namespace ProjetoLivrariaAPI.Models.Dtos.Validations
                 .NotEmpty().WithMessage("A quantidade deve ser informada.")
                 .GreaterThan(0).WithMessage("A quantidade deve ser maior que zero.");
 
-            RuleFor(x => x.DonationId)
-                .GreaterThan(0)
-                .WithMessage("O ID da doação deve ser maior que zero se informado.");
         }
     }
 }

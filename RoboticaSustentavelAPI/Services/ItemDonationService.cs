@@ -34,22 +34,35 @@ namespace RoboticaSustentavelAPI.Services
             if (!result.IsValid)
                 return ResultService.BadRequest(result);
 
+            var Now = DateTime.Now;
+            var dateNow = Now.ToString("dd-MM-yyyy HH:mm:ss");
+
             var donation = new Donation
             {
-                DateDonation = DateTime.Now
+                DateDonation = DateTime.Parse(dateNow)
             };
+
+           
             
 
             var item = _mapper.Map<ItemDonation>(createItemDonationDto);
             item.DonationId = donation.Id;
             item.Donation = donation;
+            
+
 
             var computer = await _computerRepository.GetComputerById(item.ComputerId);
             if(computer == null)
-                return ResultService.BadRequest("Computador náo encontrado");
-            computer.Status = Models.Enum.StatusComputer.doado;
-                  if(computer.Status == Models.Enum.StatusComputer.vendido)
-                return ResultService.BadRequest("Computador não pode ser vendido");
+                return ResultService.BadRequest("Computador não encontrado");
+            
+            if (computer.Quantity < 0)
+                return ResultService.BadRequest("Sem Computador no estoque");
+
+            if (item.Quantity > computer.Quantity)
+                return ResultService.BadRequest("Quantidade é maior do que a registrada no estoque");
+
+            computer.Quantity -= item.Quantity;
+
             await _itemDonationRepository.Add(item);
             return ResultService.Ok("Doação Realizada com sucesso!");
         }

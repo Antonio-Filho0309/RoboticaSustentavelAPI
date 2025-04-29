@@ -1,4 +1,6 @@
-﻿namespace RoboticaSustentavelAPI.Models
+﻿using RoboticaSustentavelAPI.Models.Enum;
+
+namespace RoboticaSustentavelAPI.Models
 {
     public class ItemDonation
     {
@@ -10,6 +12,7 @@
             ComputerId = computerId;
             DonationId = donationId;
             Quantity = quantity;
+            Status = Enum.StatusComputer.doado;
         }
 
         public int Id { get; set; }
@@ -19,5 +22,6 @@
         public int DonationId { get; set; }
         public Donation Donation { get; set; }
         public int Quantity { get; set; }
+        public StatusComputer Status { get; set; }
     }
 }

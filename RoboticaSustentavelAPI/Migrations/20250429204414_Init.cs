@@ -68,7 +68,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ComputerId = table.Column<int>(type: "integer", nullable: false),
                     DonationId = table.Column<int>(type: "integer", nullable: false),
-                    Quantity = table.Column<int>(type: "integer", nullable: false)
+                    Quantity = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -147,14 +148,14 @@ namespace RoboticaSustentavelAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "ItemDonations",
-                columns: new[] { "Id", "ComputerId", "DonationId", "Quantity" },
+                columns: new[] { "Id", "ComputerId", "DonationId", "Quantity", "Status" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, 2 },
-                    { 2, 2, 1, 1 },
-                    { 3, 3, 2, 3 },
-                    { 4, 4, 3, 1 },
-                    { 5, 5, 3, 2 }
+                    { 1, 1, 1, 2, 1 },
+                    { 2, 2, 1, 1, 1 },
+                    { 3, 3, 2, 3, 1 },
+                    { 4, 4, 3, 1, 1 },
+                    { 5, 5, 3, 2, 1 }
                 });
 
             migrationBuilder.InsertData(

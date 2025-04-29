@@ -1,4 +1,5 @@
 ﻿using RoboticaSustentavelAPI.Models.Dto.Computer;
+using RoboticaSustentavelAPI.Models.Enum;
 
 namespace RoboticaSustentavelAPI.Models.Dto.ItemDonation
 {
@@ -10,5 +11,6 @@ namespace RoboticaSustentavelAPI.Models.Dto.ItemDonation
         public int DonationId { get; set; }
         public  Donation Donation { get; set; }
         public int Quantity { get; set; }
+        public StatusComputer Status { get; set; }
     }
 }
