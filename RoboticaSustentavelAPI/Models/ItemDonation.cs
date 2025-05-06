@@ -12,11 +12,10 @@ namespace RoboticaSustentavelAPI.Models
             ComputerId = computerId;
             DonationId = donationId;
             Quantity = quantity;
-            Status = Enum.StatusComputer.doado;
+            Status = StatusComputer.doado;
         }
 
         public int Id { get; set; }
-
         public int ComputerId { get; set; }
         public Computer Computer { get; set; }
         public int DonationId { get; set; }

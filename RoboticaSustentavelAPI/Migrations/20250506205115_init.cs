@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace RoboticaSustentavelAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -96,7 +96,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ComputerId = table.Column<int>(type: "integer", nullable: false),
                     SaleId = table.Column<int>(type: "integer", nullable: false),
-                    Quantity = table.Column<int>(type: "integer", nullable: false)
+                    Quantity = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -160,12 +161,12 @@ namespace RoboticaSustentavelAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "ItemSales",
-                columns: new[] { "Id", "ComputerId", "Quantity", "SaleId" },
+                columns: new[] { "Id", "ComputerId", "Quantity", "SaleId", "Status" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, 1 },
-                    { 2, 2, 1, 1 },
-                    { 3, 3, 1, 2 }
+                    { 1, 1, 1, 1, 2 },
+                    { 2, 2, 1, 1, 2 },
+                    { 3, 3, 1, 2, 2 }
                 });
 
             migrationBuilder.CreateIndex(

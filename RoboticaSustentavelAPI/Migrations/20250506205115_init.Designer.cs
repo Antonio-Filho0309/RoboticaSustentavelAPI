@@ -12,8 +12,8 @@ using ProjetoLivrariaAPI.Data;
 namespace RoboticaSustentavelAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250429204414_Init")]
-    partial class Init
+    [Migration("20250506205115_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -240,6 +240,9 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.Property<int>("SaleId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ComputerId");
@@ -254,21 +257,24 @@ namespace RoboticaSustentavelAPI.Migrations
                             Id = 1,
                             ComputerId = 1,
                             Quantity = 1,
-                            SaleId = 1
+                            SaleId = 1,
+                            Status = 2
                         },
                         new
                         {
                             Id = 2,
                             ComputerId = 2,
                             Quantity = 1,
-                            SaleId = 1
+                            SaleId = 1,
+                            Status = 2
                         },
                         new
                         {
                             Id = 3,
                             ComputerId = 3,
                             Quantity = 1,
-                            SaleId = 2
+                            SaleId = 2,
+                            Status = 2
                         });
                 });
 

@@ -6,11 +6,9 @@ namespace RoboticaSustentavelAPI.Repositories.Interfaces
 {
     public interface IItemDonationRepository
     {
-       
             Task<ItemDonation> Add(ItemDonation itemDonation);
             Task<ICollection<ItemDonation>> GetAllItens();
             Task<ItemDonation> GetItemById(int itemId);
             Task<PagedBaseReponse<ItemDonation>> GetAllItensPaged(Filter itemFilter);
-       
     }
 }
