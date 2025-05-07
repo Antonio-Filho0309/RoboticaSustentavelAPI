@@ -8,7 +8,7 @@ namespace RoboticaSustentavelAPI.Repositories.Interfaces
     {
         Task<ItemSale> Add(ItemSale itemSale);
         Task<ICollection<ItemSale>> GetAllItens();
-        Task<ItemDonation> GetItemById(int itemId);
-        Task<PagedBaseReponse<ItemDonation>> GetAllItensPaged(Filter itemFilter);
+        Task<ItemSale> GetItemById(int itemId);
+        Task<PagedBaseReponse<ItemSale>> GetAllItensPaged(Filter itemFilter);
     }
 }

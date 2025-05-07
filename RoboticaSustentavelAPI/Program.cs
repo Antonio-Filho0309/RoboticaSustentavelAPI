@@ -23,11 +23,14 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IComputerRepository,ComputerRepository>();
 builder.Services.AddScoped<IItemDonationRepository, ItemDonationRepository>();
 builder.Services.AddScoped<IDonationRepository, DonationRepository>();
+builder.Services.AddScoped<IItemSaleRepository, ItemSaleRepository>();
+builder.Services.AddScoped<ISaleRepository, SaleRepository>();
 
 //Service
 builder.Services.AddScoped<IComputerService, ComputerService>();
 builder.Services.AddScoped<IItemDonationService, ItemDonationService>();
 builder.Services.AddScoped<IDonationService, DonationService>();
+builder.Services.AddScoped<ISalesServices , SaleService>();
 
 
 
