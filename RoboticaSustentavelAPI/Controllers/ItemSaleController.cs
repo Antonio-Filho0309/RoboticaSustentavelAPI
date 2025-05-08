@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using RoboticaSustentavelAPI.Models.Dto.ItemSale;
 using RoboticaSustentavelAPI.Repositories.Interfaces;
 
 [ApiController]
@@ -6,10 +8,12 @@ using RoboticaSustentavelAPI.Repositories.Interfaces;
 public class ItemSaleController : ControllerBase
 {
     private readonly IItemSaleRepository _itemSaleRepository;
+    private readonly IMapper _mapper;
 
-    public ItemSaleController(IItemSaleRepository itemSaleRepository)
+    public ItemSaleController(IItemSaleRepository itemSaleRepository, IMapper mapper)
     {
         _itemSaleRepository = itemSaleRepository;
+        _mapper = mapper;
     }
 
     [HttpGet("test")]
@@ -20,6 +24,8 @@ public class ItemSaleController : ControllerBase
         if (itens == null || itens.Count == 0)
             return NotFound("Nenhum item encontrado");
 
-        return Ok(itens); // Aqui você retorna direto o resultado do repositório
+        var itensDto = _mapper.Map<List<ItemSaleDto>>(itens);
+        return Ok(itensDto);
     }
+
 }

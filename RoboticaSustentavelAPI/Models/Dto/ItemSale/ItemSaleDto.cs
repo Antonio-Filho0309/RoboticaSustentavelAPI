@@ -1,4 +1,5 @@
 ﻿using RoboticaSustentavelAPI.Models.Dto.Computer;
+using RoboticaSustentavelAPI.Models.Dto.Sales;
 using RoboticaSustentavelAPI.Models.Enum;
 using RoboticaSustentavelAPI.Models;
 namespace RoboticaSustentavelAPI.Models.Dto.ItemSale;
@@ -8,7 +9,7 @@ public class ItemSaleDto
     public int ComputerId { get; set; }
     public DonationItemComputerDto Computer { get; set; }
     public int SaleId { get; set; }
-    public Sale Sale { get; set; }
+    public SaleDto Sale { get; set; }
     public int Quantity { get; set; }
     public StatusComputer Status { get; set; }
 }
