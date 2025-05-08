@@ -22,28 +22,28 @@ namespace RoboticaSustentavelAPI.Services
             _mapper = mapper;
             _saleRepository = saleRepository;
         }
-        public async Task<ResultService<ICollection<SaleDto>>> Get()
+        public async Task<ResultService<ICollection<SaleDto2>>> Get()
         {
             var sales = await _saleRepository.GetAllSales();
-            return ResultService.Ok(_mapper.Map<ICollection<SaleDto>>(sales));
+            return ResultService.Ok(_mapper.Map<ICollection<SaleDto2>>(sales));
         }
 
-        public async Task<ResultService<SaleDto>> GetById(int id)
+        public async Task<ResultService<SaleDto2>> GetById(int id)
         {
             var sale = await _saleRepository.GetSaleById(id);
             if (sale == null)
-                return ResultService.NotFound<SaleDto>("Doação não encontrada!");
+                return ResultService.NotFound<SaleDto2>("Doação não encontrada!");
 
-            return ResultService.Ok(_mapper.Map<SaleDto>(sale));
+            return ResultService.Ok(_mapper.Map<SaleDto2>(sale));
         }
 
-        public async Task<ResultService<List<SaleDto>>> GetPagedAsync(Filter saleFilter)
+        public async Task<ResultService<List<SaleDto2>>> GetPagedAsync(Filter saleFilter)
         {
             var sale = await _saleRepository.GetAllSalesPaged(saleFilter);
-            var result = new PagedBaseResponseDto<SaleDto>(sale.TotalRegisters, sale.TotalPages, sale.PageNumber, _mapper.Map<List<SaleDto>>(sale.Data));
+            var result = new PagedBaseResponseDto<SaleDto2>(sale.TotalRegisters, sale.TotalPages, sale.PageNumber, _mapper.Map<List<SaleDto2>>(sale.Data));
 
             if (result.Data.Count == 0)
-                return ResultService.NotFound<List<SaleDto>>("Nenhum Registro Encontrado");
+                return ResultService.NotFound<List<SaleDto2>>("Nenhum Registro Encontrado");
 
             return ResultService.OkPaged(result.Data, result.TotalRegisters, result.TotalPages, result.PageNumber);
         }

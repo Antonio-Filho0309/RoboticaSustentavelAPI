@@ -31,6 +31,7 @@ builder.Services.AddScoped<IComputerService, ComputerService>();
 builder.Services.AddScoped<IItemDonationService, ItemDonationService>();
 builder.Services.AddScoped<IDonationService, DonationService>();
 builder.Services.AddScoped<ISalesServices , SaleService>();
+builder.Services.AddScoped<IItemSaleService, ItemSaleService>();
 
 
 

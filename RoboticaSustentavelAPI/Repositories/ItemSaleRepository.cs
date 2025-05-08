@@ -32,7 +32,19 @@ namespace RoboticaSustentavelAPI.Repositories
 
         public async Task<PagedBaseReponse<ItemSale>> GetAllItensPaged(Filter itemFilter)
         {
-            throw new NotImplementedException();
+            var itemSale = _context.ItemSales.Include(i => i.Sale).Include(i => i.Computer).AsQueryable();
+            if (!string.IsNullOrEmpty(itemFilter.Search))
+            {
+                var filter = itemFilter.Search.ToLower();
+
+                itemSale = itemSale.Where(i =>
+                i.ComputerId.ToString().Contains(filter) ||
+                i.SaleId.ToString().Contains(filter) ||
+                i.Quantity.ToString().Contains(filter) ||
+                i.Computer.Brand.ToLower().Contains(filter) ||
+                i.Computer.Processor.ToLower().Contains(filter));
+            }
+            return await PagedBaseResponseHelper.GetResponseAsync<PagedBaseReponse<ItemSale>, ItemSale>(itemSale, itemFilter);
         }
 
         public async Task<ItemSale> GetItemById(int itemId)

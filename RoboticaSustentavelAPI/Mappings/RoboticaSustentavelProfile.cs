@@ -24,6 +24,8 @@ namespace RoboticaSustentavelAPI.Mappings
 
             //Donation
             CreateMap<Donation, DonationDto>().ReverseMap();
+            CreateMap<Donation, DonationDto2>().ReverseMap();
+
 
             //ItemSale
             CreateMap<ItemSale, CreateItemSaleDto>().ReverseMap();
@@ -31,6 +33,7 @@ namespace RoboticaSustentavelAPI.Mappings
 
             //Sale 
             CreateMap<Sale, SaleDto>().ReverseMap();
+            CreateMap<Sale, SaleDto2>().ReverseMap();
         }
     }
 }

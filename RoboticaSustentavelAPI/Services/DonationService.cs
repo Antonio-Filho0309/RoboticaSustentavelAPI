@@ -23,28 +23,28 @@ namespace RoboticaSustentavelAPI.Services
             _donationRepository = donationRepository;
         }
 
-        public async Task<ResultService<ICollection<DonationDto>>> Get()
+        public async Task<ResultService<ICollection<DonationDto2>>> Get()
         {
             var donations = await _donationRepository.GetAllDonations();
-            return ResultService.Ok(_mapper.Map<ICollection<DonationDto>>(donations));
+            return ResultService.Ok(_mapper.Map<ICollection<DonationDto2>>(donations));
         }
 
-        public async Task<ResultService<DonationDto>> GetById(int id)
+        public async Task<ResultService<DonationDto2>> GetById(int id)
         {
             var donation = await _donationRepository.GetDonationById(id);
             if (donation == null)
-                return ResultService.NotFound<DonationDto>("Doação não encontrada!");
+                return ResultService.NotFound<DonationDto2>("Doação não encontrada!");
 
-            return ResultService.Ok(_mapper.Map<DonationDto>(donation));
+            return ResultService.Ok(_mapper.Map<DonationDto2>(donation));
         }
 
-        public async Task<ResultService<List<DonationDto>>> GetPagedAsync(Filter donationFilter)
+        public async Task<ResultService<List<DonationDto2>>> GetPagedAsync(Filter donationFilter)
         {
             var donation = await _donationRepository.GetAllDonationPaged(donationFilter);
-            var result = new PagedBaseResponseDto<DonationDto>(donation.TotalRegisters, donation.TotalPages, donation.PageNumber, _mapper.Map<List<DonationDto>>(donation.Data));
+            var result = new PagedBaseResponseDto<DonationDto2>(donation.TotalRegisters, donation.TotalPages, donation.PageNumber, _mapper.Map<List<DonationDto2>>(donation.Data));
 
             if (result.Data.Count == 0)
-                return ResultService.NotFound<List<DonationDto>>("Nenhum Registro Encontrado");
+                return ResultService.NotFound<List<DonationDto2>>("Nenhum Registro Encontrado");
 
             return ResultService.OkPaged(result.Data, result.TotalRegisters, result.TotalPages, result.PageNumber);
         }
