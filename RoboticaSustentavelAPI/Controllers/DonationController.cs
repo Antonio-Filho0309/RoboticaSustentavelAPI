@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoLivrariaAPI.Models.FilterDb;
-using RoboticaSustentavelAPI.Models.Dto.Computer;
 using RoboticaSustentavelAPI.Services.Interfaces;
 using System.Net;
 

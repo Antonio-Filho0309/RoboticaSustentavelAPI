@@ -1,7 +1,6 @@
 ﻿using RoboticaSustentavelAPI.Models.Dto.Computer;
 using RoboticaSustentavelAPI.Models.Dto.Sales;
 using RoboticaSustentavelAPI.Models.Enum;
-using RoboticaSustentavelAPI.Models;
 namespace RoboticaSustentavelAPI.Models.Dto.ItemSale;
 public class ItemSaleDto
 {

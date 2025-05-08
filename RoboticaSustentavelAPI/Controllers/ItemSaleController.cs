@@ -1,9 +1,6 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoLivrariaAPI.Models.FilterDb;
-using RoboticaSustentavelAPI.Models.Dto.ItemDonation;
 using RoboticaSustentavelAPI.Models.Dto.ItemSale;
-using RoboticaSustentavelAPI.Services;
 using RoboticaSustentavelAPI.Services.Interfaces;
 using System.Net;
 

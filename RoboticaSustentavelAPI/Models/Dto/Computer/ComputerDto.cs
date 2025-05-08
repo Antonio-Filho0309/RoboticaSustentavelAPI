@@ -1,5 +1,4 @@
 ﻿using RoboticaSustentavelAPI.Models.Enum;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RoboticaSustentavelAPI.Models.Dto.Computer
 {

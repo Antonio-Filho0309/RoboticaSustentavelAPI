@@ -1,6 +1,4 @@
-﻿using RoboticaSustentavelAPI.Models.Enum;
-
-namespace RoboticaSustentavelAPI.Models.Dto.ItemSale
+﻿namespace RoboticaSustentavelAPI.Models.Dto.ItemSale
 {
     public class CreateItemSaleDto
     {

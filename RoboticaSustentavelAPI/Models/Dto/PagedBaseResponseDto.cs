@@ -1,7 +1,4 @@
 ﻿
-using Microsoft.EntityFrameworkCore.Storage;
-using ProjetoLivrariaAPI.Models.Dtos.Validations;
-
 namespace ProjetoLivrariaAPI.Models.Dtos
 {
     public class PagedBaseResponseDto<T>

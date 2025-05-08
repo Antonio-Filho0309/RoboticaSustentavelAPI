@@ -1,15 +1,9 @@
 ﻿using AutoMapper;
 using Locadora.API.Services;
 using ProjetoLivrariaAPI.Models.Dtos;
-using ProjetoLivrariaAPI.Models.Dtos.Validations;
 using ProjetoLivrariaAPI.Models.FilterDb;
-using ProjetoLivrariaAPI.Repositories;
 using RoboticaSustentavelAPI.Models;
-using RoboticaSustentavelAPI.Models.Dto.Donation;
-using RoboticaSustentavelAPI.Models.Dto.ItemDonation;
 using RoboticaSustentavelAPI.Models.Dto.ItemSale;
-using RoboticaSustentavelAPI.Models.Dto.Sales;
-using RoboticaSustentavelAPI.Repositories;
 using RoboticaSustentavelAPI.Repositories.Interfaces;
 using RoboticaSustentavelAPI.Services.Interfaces;
 

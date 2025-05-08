@@ -2,11 +2,7 @@
 using Locadora.API.Services;
 using ProjetoLivrariaAPI.Models.Dtos;
 using ProjetoLivrariaAPI.Models.FilterDb;
-using ProjetoLivrariaAPI.Pagination;
-using RoboticaSustentavelAPI.Models;
-using RoboticaSustentavelAPI.Models.Dto.Donation;
 using RoboticaSustentavelAPI.Models.Dto.Sales;
-using RoboticaSustentavelAPI.Repositories;
 using RoboticaSustentavelAPI.Repositories.Interfaces;
 using RoboticaSustentavelAPI.Services.Interfaces;
 

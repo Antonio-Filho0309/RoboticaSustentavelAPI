@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace RoboticaSustentavelAPI.Models.Dto.Computer
+﻿namespace RoboticaSustentavelAPI.Models.Dto.Computer
 {
     public class UpdateComputerDto
     {
