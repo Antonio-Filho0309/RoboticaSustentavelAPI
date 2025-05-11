@@ -46,7 +46,7 @@ namespace RoboticaSustentavelAPI.Repositories
                 i.ComputerId.ToString().Contains(filter) ||
                 i.Quantity.ToString().Contains(filter) ||
                 i.Computer.Brand.ToLower().Contains(filter) ||
-                i.Computer.Processor.ToLower().Contains(filter));
+                i.Computer.CPU.ToLower().Contains(filter));
             }
             return await PagedBaseResponseHelper.GetResponseAsync<PagedBaseReponse<ItemDonation>, ItemDonation>(itemDonation, itemFilter);
         }

@@ -12,8 +12,8 @@ using ProjetoLivrariaAPI.Data;
 namespace RoboticaSustentavelAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250506205115_init")]
-    partial class init
+    [Migration("20250509010444_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,10 +40,6 @@ namespace RoboticaSustentavelAPI.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Processor")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
@@ -67,55 +63,50 @@ namespace RoboticaSustentavelAPI.Migrations
                         {
                             Id = 1,
                             Brand = "Dell",
-                            CPU = "Intel i7-1165G7",
-                            Processor = "16GB",
+                            CPU = "Intel i7",
                             Quantity = 10,
-                            Ram = "512GB SSD",
+                            Ram = "16GB",
                             Status = 0,
-                            Storage = "Intel i7"
+                            Storage = "512GB SSD"
                         },
                         new
                         {
                             Id = 2,
                             Brand = "HP",
-                            CPU = "Intel i5-10400",
-                            Processor = "8GB",
+                            CPU = "Intel i5",
                             Quantity = 5,
-                            Ram = "1TB HDD",
+                            Ram = "8GB",
                             Status = 0,
-                            Storage = "Intel i5"
+                            Storage = "1TB HDD"
                         },
                         new
                         {
                             Id = 3,
                             Brand = "Lenovo",
-                            CPU = "Intel i9-11900K",
-                            Processor = "32GB",
+                            CPU = "Intel i9",
                             Quantity = 3,
-                            Ram = "1TB SSD",
+                            Ram = "32GB",
                             Status = 0,
-                            Storage = "Intel i9"
+                            Storage = "1TB SSD"
                         },
                         new
                         {
                             Id = 4,
-                            CPU = "Ryzen 5 5600H",
-                            Processor = "16GB",
+                            CPU = "AMD Ryzen 5",
                             Quantity = 8,
-                            Ram = "256GB SSD",
+                            Ram = "16GB",
                             Status = 0,
-                            Storage = "AMD Ryzen 5"
+                            Storage = "256GB SSD"
                         },
                         new
                         {
                             Id = 5,
                             Brand = "Asus",
-                            CPU = "Ryzen 7 5800H",
-                            Processor = "32GB",
+                            CPU = "AMD Ryzen 7",
                             Quantity = 4,
-                            Ram = "2TB HDD",
+                            Ram = "32GB",
                             Status = 0,
-                            Storage = "AMD Ryzen 7"
+                            Storage = "2TB HDD"
                         });
                 });
 

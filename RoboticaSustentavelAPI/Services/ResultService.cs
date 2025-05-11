@@ -39,8 +39,8 @@ namespace Locadora.API.Services
             {
                 Data = data,
                 TotalRegisters = totalRegisters,
-                TotalPages = totalPages,
-                PageNumber = pageNumber,
+                Page = totalPages,
+                NumberOfPages = pageNumber,
                 StatusCode = HttpStatusCode.OK
             };
         }
@@ -53,9 +53,9 @@ namespace Locadora.API.Services
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public int? TotalRegisters { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public int? TotalPages { get; set; }
+        public int? Page { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public int? PageNumber { get; set; }
+        public int? NumberOfPages { get; set; }
     }
 
 }

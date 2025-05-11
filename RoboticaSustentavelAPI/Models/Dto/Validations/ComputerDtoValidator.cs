@@ -6,11 +6,11 @@ namespace ProjetoLivrariaAPI.Models.Dtos.Validations
     public class CreateComputerDtoValidator : AbstractValidator<CreateComputerDto>
     {
         public CreateComputerDtoValidator()
+
         {
-            RuleFor(c => c.Brand)
-                .NotEmpty().WithMessage("A marca deve ser informada.")
-                .MinimumLength(2).WithMessage("A marca deve ter pelo menos 2 caracteres.")
-                .MaximumLength(50).WithMessage("A marca deve ter no máximo 50 caracteres.");
+            RuleFor(c => c.CPU)
+            .NotEmpty().WithMessage("O processador deve ser informado.")
+            .MaximumLength(20).WithMessage("A RAM deve ter no máximo 20 caracteres.");
 
             RuleFor(c => c.Ram)
                 .NotEmpty().WithMessage("A memória RAM deve ser informada.")
@@ -20,9 +20,6 @@ namespace ProjetoLivrariaAPI.Models.Dtos.Validations
                 .NotEmpty().WithMessage("O armazenamento deve ser informado.")
                 .MaximumLength(20).WithMessage("O armazenamento deve ter no máximo 20 caracteres.");
 
-            RuleFor(c => c.CPU)
-                .NotEmpty().WithMessage("O processador deve ser informado.")
-                .MaximumLength(100).WithMessage("O processador deve ter no máximo 100 caracteres.");
 
             RuleFor(c => c.Quantity)
                 .GreaterThan(0).WithMessage("A quantidade deve ser maior que zero.");
@@ -36,11 +33,10 @@ namespace ProjetoLivrariaAPI.Models.Dtos.Validations
         {
             public UpdateComputerDtoValidator()
             {
-              
-                RuleFor(c => c.Brand)
-                .NotEmpty().WithMessage("A marca deve ser informada.")
-                .MinimumLength(2).WithMessage("A marca deve ter pelo menos 2 caracteres.")
-                .MaximumLength(50).WithMessage("A marca deve ter no máximo 50 caracteres.");
+
+                RuleFor(c => c.CPU)
+                    .NotEmpty().WithMessage("O processador deve ser informado.")
+                    .MaximumLength(20).WithMessage("A RAM deve ter no máximo 20 caracteres.");
 
                 RuleFor(c => c.Ram)
                     .NotEmpty().WithMessage("A memória RAM deve ser informada.")
@@ -50,9 +46,6 @@ namespace ProjetoLivrariaAPI.Models.Dtos.Validations
                     .NotEmpty().WithMessage("O armazenamento deve ser informado.")
                     .MaximumLength(20).WithMessage("O armazenamento deve ter no máximo 20 caracteres.");
 
-                RuleFor(c => c.CPU)
-                    .NotEmpty().WithMessage("O processador deve ser informado.")
-                    .MaximumLength(100).WithMessage("O processador deve ter no máximo 100 caracteres.");
 
                 RuleFor(c => c.Quantity)
                     .GreaterThan(0).WithMessage("A quantidade deve ser maior que zero.");

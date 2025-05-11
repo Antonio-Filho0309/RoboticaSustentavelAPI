@@ -17,7 +17,7 @@ namespace RoboticaSustentavelAPI.Controllers
         }
 
         /// <summary>
-        /// Retorna todos as data de doações cadastradas
+        /// Retorna todos as data de vendas cadastradas
         /// </summary>
         [HttpGet]
         public async Task<ActionResult> Get()
@@ -29,7 +29,7 @@ namespace RoboticaSustentavelAPI.Controllers
         }
 
         /// <summary>
-        /// Retorna a data da doação pelo ID
+        /// Retorna a data da venda pelo ID
         /// </summary>
         [HttpGet("{id}")]
         public async Task<ActionResult> Get(int id)

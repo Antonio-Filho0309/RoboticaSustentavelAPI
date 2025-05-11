@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace RoboticaSustentavelAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,10 +21,9 @@ namespace RoboticaSustentavelAPI.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Brand = table.Column<string>(type: "text", nullable: true),
-                    Processor = table.Column<string>(type: "text", nullable: false),
+                    CPU = table.Column<string>(type: "text", nullable: false),
                     Ram = table.Column<string>(type: "text", nullable: false),
                     Storage = table.Column<string>(type: "text", nullable: false),
-                    CPU = table.Column<string>(type: "text", nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: true),
                     Quantity = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -118,14 +117,14 @@ namespace RoboticaSustentavelAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Computers",
-                columns: new[] { "Id", "Brand", "CPU", "Processor", "Quantity", "Ram", "Status", "Storage" },
+                columns: new[] { "Id", "Brand", "CPU", "Quantity", "Ram", "Status", "Storage" },
                 values: new object[,]
                 {
-                    { 1, "Dell", "Intel i7-1165G7", "16GB", 10, "512GB SSD", 0, "Intel i7" },
-                    { 2, "HP", "Intel i5-10400", "8GB", 5, "1TB HDD", 0, "Intel i5" },
-                    { 3, "Lenovo", "Intel i9-11900K", "32GB", 3, "1TB SSD", 0, "Intel i9" },
-                    { 4, null, "Ryzen 5 5600H", "16GB", 8, "256GB SSD", 0, "AMD Ryzen 5" },
-                    { 5, "Asus", "Ryzen 7 5800H", "32GB", 4, "2TB HDD", 0, "AMD Ryzen 7" }
+                    { 1, "Dell", "Intel i7", 10, "16GB", 0, "512GB SSD" },
+                    { 2, "HP", "Intel i5", 5, "8GB", 0, "1TB HDD" },
+                    { 3, "Lenovo", "Intel i9", 3, "32GB", 0, "1TB SSD" },
+                    { 4, null, "AMD Ryzen 5", 8, "16GB", 0, "256GB SSD" },
+                    { 5, "Asus", "AMD Ryzen 7", 4, "32GB", 0, "2TB HDD" }
                 });
 
             migrationBuilder.InsertData(

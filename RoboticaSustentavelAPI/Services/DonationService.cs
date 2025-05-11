@@ -37,12 +37,12 @@ namespace RoboticaSustentavelAPI.Services
         public async Task<ResultService<List<DonationDto2>>> GetPagedAsync(Filter donationFilter)
         {
             var donation = await _donationRepository.GetAllDonationPaged(donationFilter);
-            var result = new PagedBaseResponseDto<DonationDto2>(donation.TotalRegisters, donation.TotalPages, donation.PageNumber, _mapper.Map<List<DonationDto2>>(donation.Data));
+            var result = new PagedBaseResponseDto<DonationDto2>(donation.TotalRegisters, donation.Page, donation.NumberOfPages, _mapper.Map<List<DonationDto2>>(donation.Data));
 
             if (result.Data.Count == 0)
                 return ResultService.NotFound<List<DonationDto2>>("Nenhum Registro Encontrado");
 
-            return ResultService.OkPaged(result.Data, result.TotalRegisters, result.TotalPages, result.PageNumber);
+            return ResultService.OkPaged(result.Data, result.TotalRegisters, result.Page, result.NumberOfPages);
         }
     }
 }

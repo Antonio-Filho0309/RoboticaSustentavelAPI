@@ -45,6 +45,7 @@ namespace RoboticaSustentavelAPI.Services
             var item = _mapper.Map<ItemDonation>(createItemDonationDto);
             item.DonationId = donation.Id;
             item.Donation = donation;
+            item.Status = Models.Enum.StatusComputer.doado;
             
 
 
@@ -52,11 +53,8 @@ namespace RoboticaSustentavelAPI.Services
             if(computer == null)
                 return ResultService.BadRequest("Computador não encontrado");
             
-            if (computer.Quantity < 0)
-                return ResultService.BadRequest("Sem Computador no estoque");
-
             if (item.Quantity > computer.Quantity)
-                return ResultService.BadRequest("Quantidade é maior do que a registrada no estoque");
+                return ResultService.BadRequest("Sem estoque suficiente!");
 
             computer.Quantity -= item.Quantity;
 
@@ -81,12 +79,12 @@ namespace RoboticaSustentavelAPI.Services
         public async Task<ResultService<List<ItemDonationDto>>> GetPagedAsync(Filter itemFilter)
         {
             var item = await _itemDonationRepository.GetAllItensPaged(itemFilter);
-            var result = new PagedBaseResponseDto<ItemDonationDto>(item.TotalRegisters, item.TotalPages, item.PageNumber, _mapper.Map<List<ItemDonationDto>>(item.Data));
+            var result = new PagedBaseResponseDto<ItemDonationDto>(item.TotalRegisters, item.Page, item.NumberOfPages, _mapper.Map<List<ItemDonationDto>>(item.Data));
 
             if (result.Data.Count == 0)
                 return ResultService.NotFound<List<ItemDonationDto>>("Nenhum Registro Encontrado");
 
-            return ResultService.OkPaged(result.Data, result.TotalRegisters, result.TotalPages, result.PageNumber);
+            return ResultService.OkPaged(result.Data, result.TotalRegisters, result.Page, result.NumberOfPages);
         }
     }
 }

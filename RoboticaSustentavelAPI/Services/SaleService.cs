@@ -36,12 +36,12 @@ namespace RoboticaSustentavelAPI.Services
         public async Task<ResultService<List<SaleDto2>>> GetPagedAsync(Filter saleFilter)
         {
             var sale = await _saleRepository.GetAllSalesPaged(saleFilter);
-            var result = new PagedBaseResponseDto<SaleDto2>(sale.TotalRegisters, sale.TotalPages, sale.PageNumber, _mapper.Map<List<SaleDto2>>(sale.Data));
+            var result = new PagedBaseResponseDto<SaleDto2>(sale.TotalRegisters, sale.Page, sale.NumberOfPages, _mapper.Map<List<SaleDto2>>(sale.Data));
 
             if (result.Data.Count == 0)
                 return ResultService.NotFound<List<SaleDto2>>("Nenhum Registro Encontrado");
 
-            return ResultService.OkPaged(result.Data, result.TotalRegisters, result.TotalPages, result.PageNumber);
+            return ResultService.OkPaged(result.Data, result.TotalRegisters, result.Page, result.NumberOfPages);
         }
     }
 }

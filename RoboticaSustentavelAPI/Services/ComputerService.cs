@@ -62,12 +62,12 @@ namespace RoboticaSustentavelAPI.Services
         public async Task<ResultService<List<ComputerDto>>> GetPagedAsync(Filter computerFilter)
         {
             var computer = await _computerRepository.GetAllComputerPaged(computerFilter);
-            var result = new PagedBaseResponseDto<ComputerDto>(computer.TotalRegisters, computer.TotalPages, computer.PageNumber, _mapper.Map<List<ComputerDto>>(computer.Data));
+            var result = new PagedBaseResponseDto<ComputerDto>(computer.TotalRegisters, computer.Page, computer.NumberOfPages, _mapper.Map<List<ComputerDto>>(computer.Data));
 
             if (result.Data.Count == 0)
                 return ResultService.NotFound<List<ComputerDto>>("Nenhum Registro Encontrado");
 
-            return ResultService.OkPaged(result.Data, result.TotalRegisters, result.TotalPages, result.PageNumber);
+            return ResultService.OkPaged(result.Data, result.TotalRegisters, result.Page, result.NumberOfPages);
         }
 
         public async Task<ResultService> Update(int id, UpdateComputerDto updateComputerDto)

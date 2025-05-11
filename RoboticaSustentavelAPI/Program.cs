@@ -33,7 +33,13 @@ builder.Services.AddScoped<IDonationService, DonationService>();
 builder.Services.AddScoped<ISalesServices , SaleService>();
 builder.Services.AddScoped<IItemSaleService, ItemSaleService>();
 
-
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowLocalhost8080", builder => {
+        builder.WithOrigins("http://localhost:8080")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
