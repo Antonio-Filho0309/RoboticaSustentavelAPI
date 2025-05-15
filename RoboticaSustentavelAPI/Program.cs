@@ -8,6 +8,7 @@ using RoboticaSustentavelAPI.Services;
 using RoboticaSustentavelAPI.Services.Interfaces;
 using System.Text.Json.Serialization;
 
+//Teste de branch
 var builder = WebApplication.CreateBuilder(args);
 
 Env.Load();
