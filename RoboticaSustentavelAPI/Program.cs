@@ -51,7 +51,6 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Pipeline
-builder.WebHost.UseUrls("http://0.0.0.0:80");
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseAuthorization();
