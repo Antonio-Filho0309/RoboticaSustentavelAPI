@@ -7,6 +7,7 @@ using RoboticaSustentavelAPI.Repositories.Interfaces;
 using RoboticaSustentavelAPI.Services.Interfaces;
 using ProjetoLivrariaAPI.Models.Dtos.Validations;
 using ProjetoLivrariaAPI.Models.Dtos;
+using RoboticaSustentavelAPI.Models.Dto.Computer;
 
 namespace RoboticaSustentavelAPI.Services
 {
@@ -82,8 +83,9 @@ namespace RoboticaSustentavelAPI.Services
             var result = new PagedBaseResponseDto<ItemDonationDto>(item.TotalRegisters, item.Page, item.NumberOfPages, _mapper.Map<List<ItemDonationDto>>(item.Data));
 
             if (result.Data.Count == 0)
-                return ResultService.NotFound<List<ItemDonationDto>>("Nenhum Registro Encontrado");
-
+            {
+                return ResultService.OkPaged(new List<ItemDonationDto>(), 0, itemFilter.PageNumber, 0);
+            }
             return ResultService.OkPaged(result.Data, result.TotalRegisters, result.Page, result.NumberOfPages);
         }
     }

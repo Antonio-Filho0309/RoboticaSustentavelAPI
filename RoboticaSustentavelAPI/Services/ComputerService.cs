@@ -65,7 +65,9 @@ namespace RoboticaSustentavelAPI.Services
             var result = new PagedBaseResponseDto<ComputerDto>(computer.TotalRegisters, computer.Page, computer.NumberOfPages, _mapper.Map<List<ComputerDto>>(computer.Data));
 
             if (result.Data.Count == 0)
-                return ResultService.NotFound<List<ComputerDto>>("Nenhum Registro Encontrado");
+            {
+                return ResultService.OkPaged(new List<ComputerDto>(), 0, computerFilter.PageNumber, 0);
+            }
 
             return ResultService.OkPaged(result.Data, result.TotalRegisters, result.Page, result.NumberOfPages);
         }

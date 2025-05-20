@@ -30,6 +30,15 @@ namespace ProjetoLivrariaAPI.Pagination
                     .ToList();
             }
 
+            if (count == 0)
+            {
+                response.TotalRegisters = 0;
+                response.Page = request.PageNumber;
+                response.NumberOfPages = 0;
+                response.Data = new List<T>();
+                return response;
+            }
+
             return response;
         }
 

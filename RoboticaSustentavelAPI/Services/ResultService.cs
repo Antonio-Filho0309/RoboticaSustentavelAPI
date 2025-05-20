@@ -33,14 +33,14 @@ namespace Locadora.API.Services
                 StatusCode = HttpStatusCode.OK
             };
         }
-        public static ResultService<T> OkPaged<T>(T data, int totalRegisters, int totalPages, int pageNumber)
+        public static ResultService<T> OkPaged<T>(T data, int totalRegisters, int page, int numberOfPages)
         {
             return new ResultService<T>
             {
                 Data = data,
                 TotalRegisters = totalRegisters,
-                Page = totalPages,
-                NumberOfPages = pageNumber,
+                Page = page,
+                NumberOfPages = numberOfPages,
                 StatusCode = HttpStatusCode.OK
             };
         }

@@ -2,6 +2,7 @@
 using Locadora.API.Services;
 using ProjetoLivrariaAPI.Models.Dtos;
 using ProjetoLivrariaAPI.Models.FilterDb;
+using RoboticaSustentavelAPI.Models.Dto.Computer;
 using RoboticaSustentavelAPI.Models.Dto.Donation;
 using RoboticaSustentavelAPI.Repositories.Interfaces;
 using RoboticaSustentavelAPI.Services.Interfaces;
@@ -40,7 +41,9 @@ namespace RoboticaSustentavelAPI.Services
             var result = new PagedBaseResponseDto<DonationDto2>(donation.TotalRegisters, donation.Page, donation.NumberOfPages, _mapper.Map<List<DonationDto2>>(donation.Data));
 
             if (result.Data.Count == 0)
-                return ResultService.NotFound<List<DonationDto2>>("Nenhum Registro Encontrado");
+            {
+                return ResultService.OkPaged(new List<DonationDto2>(), 0, donationFilter.PageNumber, 0);
+            }
 
             return ResultService.OkPaged(result.Data, result.TotalRegisters, result.Page, result.NumberOfPages);
         }
