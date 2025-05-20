@@ -35,10 +35,11 @@ builder.Services.AddScoped<ISalesServices , SaleService>();
 builder.Services.AddScoped<IItemSaleService, ItemSaleService>();
 
 builder.Services.AddCors(options => {
-    options.AddPolicy("AllowLocalhost8080", builder => {
-        builder.WithOrigins("http://localhost:8080")
-               .AllowAnyHeader()
-               .AllowAnyMethod();
+    options.AddPolicy("AllowAll", builder => {
+        builder
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
 
@@ -54,6 +55,7 @@ var app = builder.Build();
 // Pipeline
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseCors("AllowAll");
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

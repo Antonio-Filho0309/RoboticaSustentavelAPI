@@ -70,7 +70,7 @@ namespace RoboticaSustentavelAPI.Services
         {
             var sale = await _itemSaleRepository.GetItemById(id);
             if (sale == null)
-                return ResultService.NotFound<ItemSaleDto>("Doação não encontrada!");
+                return ResultService.NotFound<ItemSaleDto>("Venda não encontrada!");
 
             return ResultService.Ok(_mapper.Map<ItemSaleDto>(sale));
         }
