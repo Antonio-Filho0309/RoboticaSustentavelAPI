@@ -12,7 +12,7 @@ using ProjetoLivrariaAPI.Data;
 namespace RoboticaSustentavelAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250509010444_Init")]
+    [Migration("20250522021401_Init")]
     partial class Init
     {
         /// <inheritdoc />

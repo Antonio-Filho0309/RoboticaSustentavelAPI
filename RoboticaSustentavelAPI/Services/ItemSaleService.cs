@@ -32,12 +32,9 @@ namespace RoboticaSustentavelAPI.Services
             if (!result.IsValid)
                 return ResultService.BadRequest(result);
 
-            var Now = DateTime.Now;
-            var dateNow = Now.ToString("dd-MM-yyyy HH:mm");
-
             var sale = new Sale
             {
-                SaleDate = DateTime.Parse(dateNow),
+                SaleDate = DateTime.Now,
                 PriceSale = createItemSaleDto.PriceSale
             };
 

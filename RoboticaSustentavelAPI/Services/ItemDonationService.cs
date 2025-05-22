@@ -35,12 +35,10 @@ namespace RoboticaSustentavelAPI.Services
             if (!result.IsValid)
                 return ResultService.BadRequest(result);
 
-            var Now = DateTime.Now;
-            var dateNow = Now.ToString("dd-MM-yyyy HH:mm");
 
             var donation = new Donation
             {
-                DateDonation = DateTime.Parse(dateNow)
+                DateDonation = DateTime.Now
             };
 
             var item = _mapper.Map<ItemDonation>(createItemDonationDto);
