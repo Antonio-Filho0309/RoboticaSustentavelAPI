@@ -12,8 +12,8 @@ using ProjetoLivrariaAPI.Data;
 namespace RoboticaSustentavelAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250522021401_Init")]
-    partial class Init
+    [Migration("20250523021208_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
