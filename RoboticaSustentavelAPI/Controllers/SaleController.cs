@@ -53,21 +53,5 @@ namespace RoboticaSustentavelAPI.Controllers
                 return Ok(result);
             return NotFound(result);
         }
-
-
-        /// <summary>
-        /// método para paginação
-        /// </summary>
-        [HttpGet]
-        [Route("Paged")]
-        public async Task<ActionResult> GetByIdAsync([FromQuery] Filter donationFilter)
-        {
-            var result = await _saleService.GetPagedAsync(donationFilter);
-            if (result.StatusCode == HttpStatusCode.OK)
-                return Ok(result);
-            return NotFound(result);
-        }
-
-
     }
 }
