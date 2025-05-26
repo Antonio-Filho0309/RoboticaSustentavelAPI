@@ -95,7 +95,9 @@ namespace RoboticaSustentavelAPI.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ComputerId = table.Column<int>(type: "integer", nullable: false),
+                    ComputerId = table.Column<int>(type: "integer", nullable: true),
+                    Brand = table.Column<string>(type: "text", nullable: true),
+                    CPU = table.Column<string>(type: "text", nullable: true),
                     SaleId = table.Column<int>(type: "integer", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: false)
@@ -108,7 +110,7 @@ namespace RoboticaSustentavelAPI.Migrations
                         column: x => x.ComputerId,
                         principalTable: "Computers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_ItemSales_Sales_SaleId",
                         column: x => x.SaleId,
@@ -162,12 +164,12 @@ namespace RoboticaSustentavelAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "ItemSales",
-                columns: new[] { "Id", "ComputerId", "Quantity", "SaleId", "Status" },
+                columns: new[] { "Id", "Brand", "CPU", "ComputerId", "Quantity", "SaleId", "Status" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, 1, 2 },
-                    { 2, 2, 1, 1, 2 },
-                    { 3, 3, 1, 2, 2 }
+                    { 1, null, null, 1, 1, 1, 2 },
+                    { 2, null, null, 2, 1, 1, 2 },
+                    { 3, null, null, 3, 1, 2, 2 }
                 });
 
             migrationBuilder.CreateIndex(
