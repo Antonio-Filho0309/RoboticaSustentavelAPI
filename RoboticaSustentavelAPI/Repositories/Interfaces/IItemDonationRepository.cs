@@ -10,5 +10,6 @@ namespace RoboticaSustentavelAPI.Repositories.Interfaces
             Task<ICollection<ItemDonation>> GetAllItens();
             Task<ItemDonation> GetItemById(int itemId);
             Task<PagedBaseReponse<ItemDonation>> GetAllItensPaged(Filter itemFilter);
+            
     }
 }

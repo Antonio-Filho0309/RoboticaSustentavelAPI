@@ -1,4 +1,5 @@
-﻿using RoboticaSustentavelAPI.Models.Enum;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
+using RoboticaSustentavelAPI.Models.Enum;
 
 namespace RoboticaSustentavelAPI.Models
 {
@@ -16,8 +17,10 @@ namespace RoboticaSustentavelAPI.Models
         }
 
         public int Id { get; set; }
-        public int ComputerId { get; set; }
+        public int? ComputerId { get; set; }
         public Computer Computer { get; set; }
+        public string? Brand { get; set; }
+        public string? CPU { get; set; }
         public int DonationId { get; set; }
         public Donation Donation { get; set; }
         public int Quantity { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoLivrariaAPI.Models.FilterDb;
+using RoboticaSustentavelAPI.Repositories.Interfaces;
 using RoboticaSustentavelAPI.Services.Interfaces;
 using System.Net;
 
@@ -10,10 +11,11 @@ namespace RoboticaSustentavelAPI.Controllers
     public class SaleController : ControllerBase
     {
         private readonly ISalesServices _saleService;
-
-        public SaleController(ISalesServices salesService)
+        private readonly ISaleRepository _saleRepository;
+        public SaleController(ISalesServices salesService, ISaleRepository saleRepository)
         {
             _saleService = salesService;
+            _saleRepository = saleRepository;
         }
 
         /// <summary>
@@ -29,6 +31,18 @@ namespace RoboticaSustentavelAPI.Controllers
         }
 
         /// <summary>
+        /// Retorna todos as data de vendas cadastradas
+        /// </summary>
+        [HttpGet]
+        [Route("Sum")]
+        public async Task<ActionResult> GetSum()
+        {
+            var result = await _saleRepository.GetSumSale();
+            if (result>=0)
+                return Ok(result);
+            return BadRequest("Nenhum registro encontrado");
+        }
+        /// <summary>
         /// Retorna a data da venda pelo ID
         /// </summary>
         [HttpGet("{id}")]
@@ -39,21 +53,5 @@ namespace RoboticaSustentavelAPI.Controllers
                 return Ok(result);
             return NotFound(result);
         }
-
-
-        /// <summary>
-        /// método para paginação
-        /// </summary>
-        [HttpGet]
-        [Route("Paged")]
-        public async Task<ActionResult> GetByIdAsync([FromQuery] Filter donationFilter)
-        {
-            var result = await _saleService.GetPagedAsync(donationFilter);
-            if (result.StatusCode == HttpStatusCode.OK)
-                return Ok(result);
-            return NotFound(result);
-        }
-
-
     }
 }

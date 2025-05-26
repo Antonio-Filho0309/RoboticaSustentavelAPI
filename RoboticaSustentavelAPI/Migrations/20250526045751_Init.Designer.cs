@@ -12,7 +12,7 @@ using ProjetoLivrariaAPI.Data;
 namespace RoboticaSustentavelAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250526025830_Init")]
+    [Migration("20250526045751_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -151,7 +151,13 @@ namespace RoboticaSustentavelAPI.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ComputerId")
+                    b.Property<string>("Brand")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CPU")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("ComputerId")
                         .HasColumnType("integer");
 
                     b.Property<int>("DonationId")
@@ -222,7 +228,13 @@ namespace RoboticaSustentavelAPI.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ComputerId")
+                    b.Property<string>("Brand")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CPU")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("ComputerId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Quantity")
@@ -307,8 +319,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensDonation")
                         .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Donation", "Donation")
                         .WithMany("ItensDonations")
@@ -326,8 +337,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensSales")
                         .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Sale", "Sale")
                         .WithMany("ItensSales")

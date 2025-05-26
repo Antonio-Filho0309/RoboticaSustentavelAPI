@@ -44,8 +44,9 @@ namespace RoboticaSustentavelAPI.Services
             item.Status = Models.Enum.StatusComputer.vendido;
 
 
-
-            var computer = await _computerRepository.GetComputerById(item.ComputerId);
+            if (!item.ComputerId.HasValue)
+                return ResultService.BadRequest("O ID do computador é obrigatório!");
+            var computer = await _computerRepository.GetComputerById(item.ComputerId.Value);
             if (computer == null)
                 return ResultService.BadRequest("Computador não encontrado");
 
@@ -54,6 +55,8 @@ namespace RoboticaSustentavelAPI.Services
 
             computer.Quantity -= item.Quantity;
 
+            item.Brand = computer.Brand;
+            item.CPU = computer.CPU;
             await _itemSaleRepository.Add(item);
             return ResultService.Ok("Venda Realizada com sucesso!");
         }

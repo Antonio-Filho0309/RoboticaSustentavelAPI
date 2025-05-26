@@ -18,8 +18,10 @@ namespace RoboticaSustentavelAPI.Models
         }
 
         public int Id { get; set; }
-        public int ComputerId { get; set; }
+        public int? ComputerId { get; set; }
         public Computer Computer { get; set; }
+        public string? Brand { get; set; }
+        public string? CPU { get; set; }
         public int SaleId { get; set; }
         public Sale Sale { get; set; }
         public int Quantity { get; set; }
