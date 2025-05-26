@@ -12,7 +12,7 @@ using ProjetoLivrariaAPI.Data;
 namespace RoboticaSustentavelAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250526025830_Init")]
+    [Migration("20250526034703_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -150,6 +150,12 @@ namespace RoboticaSustentavelAPI.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Brand")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CPU")
+                        .HasColumnType("text");
 
                     b.Property<int>("ComputerId")
                         .HasColumnType("integer");

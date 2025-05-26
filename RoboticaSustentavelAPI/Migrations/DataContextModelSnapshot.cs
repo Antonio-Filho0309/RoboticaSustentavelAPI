@@ -148,6 +148,12 @@ namespace RoboticaSustentavelAPI.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Brand")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CPU")
+                        .HasColumnType("text");
+
                     b.Property<int>("ComputerId")
                         .HasColumnType("integer");
 

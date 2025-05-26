@@ -57,6 +57,10 @@ namespace RoboticaSustentavelAPI.Services
 
             computer.Quantity -= item.Quantity;
 
+
+           item.Brand = computer.Brand;
+           item.CPU = computer.CPU;
+
             await _itemDonationRepository.Add(item);
             return ResultService.Ok("Doação Realizada com sucesso!");
         }

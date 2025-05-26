@@ -9,7 +9,8 @@ namespace RoboticaSustentavelAPI.Models.Dto.ItemDonation
     {
         public int Id { get; set; }
         public int ComputerId { get; set; }
-        public DonationItemComputerDto Computer { get; set; }
+        public string? Brand { get; set; }
+        public string CPU { get; set; }
         public int DonationId { get; set; }
         public  DonationDto Donation { get; set; }
         public int Quantity { get; set; }
