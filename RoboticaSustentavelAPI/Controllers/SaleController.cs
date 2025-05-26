@@ -19,7 +19,7 @@ namespace RoboticaSustentavelAPI.Controllers
         }
 
         /// <summary>
-        /// Retorna todos as data de vendas cadastradas
+        /// Retorna todos  vendas cadastradas
         /// </summary>
         [HttpGet]
         public async Task<ActionResult> Get()
@@ -31,7 +31,7 @@ namespace RoboticaSustentavelAPI.Controllers
         }
 
         /// <summary>
-        /// Retorna todos as data de vendas cadastradas
+        /// Retorna a soma de todas as vendas cadastradas
         /// </summary>
         [HttpGet]
         [Route("Sum")]
@@ -43,7 +43,7 @@ namespace RoboticaSustentavelAPI.Controllers
             return BadRequest("Nenhum registro encontrado");
         }
         /// <summary>
-        /// Retorna a data da venda pelo ID
+        /// Retorna a  venda pelo ID
         /// </summary>
         [HttpGet("{id}")]
         public async Task<ActionResult> Get(int id)

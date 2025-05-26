@@ -29,7 +29,7 @@ public class ItemSaleController : ControllerBase
 
 
     /// <summary>
-    /// Retorna a venda  pelo ID
+    /// Retorna um item de venda  pelo ID
     /// </summary>
     [HttpGet("{id}")]
     public async Task<ActionResult> Get(int id)
@@ -54,7 +54,7 @@ public class ItemSaleController : ControllerBase
     }
 
     /// <summary>
-    /// Cria um novo item de doação
+    /// Cria um novo item de venda
     /// </summary>
     [HttpPost]
     public async Task<ActionResult> Post([FromBody] CreateItemSaleDto createItemSalenDto)
