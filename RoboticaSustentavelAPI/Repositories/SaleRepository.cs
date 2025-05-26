@@ -42,5 +42,10 @@ namespace RoboticaSustentavelAPI.Repositories
         {
             return await _context.Sales.FirstOrDefaultAsync(s => s.Id == saleId);
         }
+
+        public async Task<double> GetSumSale()
+        {
+            return await _context.Sales.SumAsync(s => s.PriceSale);
+        }
     }
 }

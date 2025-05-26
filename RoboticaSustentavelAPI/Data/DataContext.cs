@@ -20,13 +20,13 @@ namespace ProjetoLivrariaAPI.Data
                 .HasOne(i => i.Computer)
                 .WithMany(c => c.ItensDonation)
                 .HasForeignKey(i => i.ComputerId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.Entity<ItemSale>()
                .HasOne(i => i.Computer)
                .WithMany(c => c.ItensSales)
                .HasForeignKey(i => i.ComputerId)
-               .OnDelete(DeleteBehavior.SetNull);
+               .OnDelete(DeleteBehavior.NoAction);
 
             builder.Entity<Donation>()
                 .Property(d => d.DateDonation)
