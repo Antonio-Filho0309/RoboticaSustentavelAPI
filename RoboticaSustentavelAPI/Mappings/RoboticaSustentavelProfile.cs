@@ -5,6 +5,7 @@ using RoboticaSustentavelAPI.Models.Dto.Donation;
 using RoboticaSustentavelAPI.Models.Dto.ItemDonation;
 using RoboticaSustentavelAPI.Models.Dto.ItemSale;
 using RoboticaSustentavelAPI.Models.Dto.Sales;
+using RoboticaSustentavelAPI.Models.Dto;
 
 namespace RoboticaSustentavelAPI.Mappings
 {
@@ -21,6 +22,8 @@ namespace RoboticaSustentavelAPI.Mappings
             //ItemDonation
             CreateMap<ItemDonation, ItemDonationDto>().ReverseMap();
             CreateMap<ItemDonation, CreateItemDonationDto>().ReverseMap();
+            CreateMap<ItemDonation, Item>()
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Donation.DateDonation));
 
             //Donation
             CreateMap<Donation, DonationDto>().ReverseMap();
@@ -30,6 +33,8 @@ namespace RoboticaSustentavelAPI.Mappings
             //ItemSale
             CreateMap<ItemSale, CreateItemSaleDto>().ReverseMap();
             CreateMap<ItemSale, ItemSaleDto>().ReverseMap();
+            CreateMap<ItemSale, Item>()
+                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Sale.SaleDate));
 
             //Sale 
             CreateMap<Sale, SaleDto>().ReverseMap();
