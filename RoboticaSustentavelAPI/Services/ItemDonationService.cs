@@ -45,10 +45,11 @@ namespace RoboticaSustentavelAPI.Services
             item.DonationId = donation.Id;
             item.Donation = donation;
             item.Status = Models.Enum.StatusComputer.doado;
-            
 
+            if (!item.ComputerId.HasValue)
+                return ResultService.BadRequest("O ID do computador é obrigatório!");
 
-            var computer = await _computerRepository.GetComputerById(item.ComputerId);
+            var computer = await _computerRepository.GetComputerById(item.ComputerId.Value);
             if(computer == null)
                 return ResultService.BadRequest("Computador não encontrado");
             

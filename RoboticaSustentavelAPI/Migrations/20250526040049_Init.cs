@@ -65,7 +65,7 @@ namespace RoboticaSustentavelAPI.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ComputerId = table.Column<int>(type: "integer", nullable: false),
+                    ComputerId = table.Column<int>(type: "integer", nullable: true),
                     Brand = table.Column<string>(type: "text", nullable: true),
                     CPU = table.Column<string>(type: "text", nullable: true),
                     DonationId = table.Column<int>(type: "integer", nullable: false),
@@ -80,7 +80,7 @@ namespace RoboticaSustentavelAPI.Migrations
                         column: x => x.ComputerId,
                         principalTable: "Computers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_ItemDonations_Donations_DonationId",
                         column: x => x.DonationId,

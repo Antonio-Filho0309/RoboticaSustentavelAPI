@@ -12,7 +12,7 @@ using ProjetoLivrariaAPI.Data;
 namespace RoboticaSustentavelAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250526034703_Init")]
+    [Migration("20250526040049_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -157,7 +157,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.Property<string>("CPU")
                         .HasColumnType("text");
 
-                    b.Property<int>("ComputerId")
+                    b.Property<int?>("ComputerId")
                         .HasColumnType("integer");
 
                     b.Property<int>("DonationId")
@@ -313,8 +313,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensDonation")
                         .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Donation", "Donation")
                         .WithMany("ItensDonations")

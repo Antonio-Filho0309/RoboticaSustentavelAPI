@@ -154,7 +154,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.Property<string>("CPU")
                         .HasColumnType("text");
 
-                    b.Property<int>("ComputerId")
+                    b.Property<int?>("ComputerId")
                         .HasColumnType("integer");
 
                     b.Property<int>("DonationId")
@@ -310,8 +310,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensDonation")
                         .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Donation", "Donation")
                         .WithMany("ItensDonations")
