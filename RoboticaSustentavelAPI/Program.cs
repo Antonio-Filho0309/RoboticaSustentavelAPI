@@ -52,7 +52,7 @@ builder.Services.AddSwaggerGen(options => {
         },
         License = new OpenApiLicense
         {
-            Name = "Projeto livraria License",
+            Name = "Projeto Robotica Sustentavel License",
             Url = new Uri("https://mit.edu")
         },
     });

@@ -26,6 +26,9 @@ namespace RoboticaSustentavelAPI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Retorna os 4 últimos computadores,vendidos ou doados
+        /// </summary>
         [HttpGet("ItemList")]
         public async Task<IActionResult> GetItemList()
         {
