@@ -16,6 +16,18 @@ namespace ProjetoLivrariaAPI.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             // Configuração de tipos
+            builder.Entity<ItemDonation>()
+                .HasOne(i => i.Computer)
+                .WithMany(c => c.ItensDonation)
+                .HasForeignKey(i => i.ComputerId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<ItemSale>()
+               .HasOne(i => i.Computer)
+               .WithMany(c => c.ItensSales)
+               .HasForeignKey(i => i.ComputerId)
+               .OnDelete(DeleteBehavior.NoAction);
+
             builder.Entity<Donation>()
                 .Property(d => d.DateDonation)
                 .HasColumnType("timestamp");

@@ -8,6 +8,5 @@ namespace RoboticaSustentavelAPI.Services.Interfaces
     {
         Task<ResultService<ICollection<SaleDto2>>> Get();
         Task<ResultService<SaleDto2>> GetById(int id);
-        Task<ResultService<List<SaleDto2>>> GetPagedAsync(Filter saleFilter);
     }
 }

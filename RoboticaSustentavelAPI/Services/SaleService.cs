@@ -33,18 +33,5 @@ namespace RoboticaSustentavelAPI.Services
 
             return ResultService.Ok(_mapper.Map<SaleDto2>(sale));
         }
-
-        public async Task<ResultService<List<SaleDto2>>> GetPagedAsync(Filter saleFilter)
-        {
-            var sale = await _saleRepository.GetAllSalesPaged(saleFilter);
-            var result = new PagedBaseResponseDto<SaleDto2>(sale.TotalRegisters, sale.Page, sale.NumberOfPages, _mapper.Map<List<SaleDto2>>(sale.Data));
-
-            if (result.Data.Count == 0)
-            {
-                return ResultService.OkPaged(new List<SaleDto2>(), 0, saleFilter.PageNumber, 0);
-            }
-
-            return ResultService.OkPaged(result.Data, result.TotalRegisters, result.Page, result.NumberOfPages);
-        }
     }
 }

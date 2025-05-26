@@ -9,5 +9,6 @@ namespace RoboticaSustentavelAPI.Repositories.Interfaces
         Task<ICollection<Sale>> GetAllSales();
         Task<Sale> GetSaleById(int saleId);
         Task<PagedBaseReponse<Sale>> GetAllSalesPaged(Filter saleFilter);
+        Task <double> GetSumSale();
     }
 }

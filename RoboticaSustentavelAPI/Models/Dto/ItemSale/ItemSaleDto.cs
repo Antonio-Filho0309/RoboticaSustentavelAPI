@@ -6,7 +6,8 @@ public class ItemSaleDto
 {
     public int Id { get; set; }
     public int ComputerId { get; set; }
-    public DonationItemComputerDto Computer { get; set; }
+    public string? Brand { get; set; }
+    public string CPU { get; set; }
     public int SaleId { get; set; }
     public SaleDto Sale { get; set; }
     public int Quantity { get; set; }
