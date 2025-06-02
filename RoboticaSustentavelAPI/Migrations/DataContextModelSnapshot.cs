@@ -331,7 +331,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensDonation")
                         .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Donation", "Donation")
                         .WithMany("ItensDonations")
@@ -349,7 +349,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensSales")
                         .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Sale", "Sale")
                         .WithMany("ItensSales")

@@ -12,7 +12,7 @@ using ProjetoLivrariaAPI.Data;
 namespace RoboticaSustentavelAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250602002447_Init")]
+    [Migration("20250602111218_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -334,7 +334,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensDonation")
                         .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Donation", "Donation")
                         .WithMany("ItensDonations")
@@ -352,7 +352,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensSales")
                         .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Sale", "Sale")
                         .WithMany("ItensSales")

@@ -79,7 +79,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         name: "FK_ItemDonations_Computers_ComputerId",
                         column: x => x.ComputerId,
                         principalTable: "Computers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_ItemDonations_Donations_DonationId",
                         column: x => x.DonationId,
@@ -108,7 +109,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         name: "FK_ItemSales_Computers_ComputerId",
                         column: x => x.ComputerId,
                         principalTable: "Computers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_ItemSales_Sales_SaleId",
                         column: x => x.SaleId,
