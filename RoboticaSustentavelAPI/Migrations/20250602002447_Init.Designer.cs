@@ -12,7 +12,7 @@ using ProjetoLivrariaAPI.Data;
 namespace RoboticaSustentavelAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250526045751_Init")]
+    [Migration("20250602002447_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -181,6 +181,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         new
                         {
                             Id = 1,
+                            Brand = "Dell",
+                            CPU = "Intel i7",
                             ComputerId = 1,
                             DonationId = 1,
                             Quantity = 2,
@@ -189,6 +191,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         new
                         {
                             Id = 2,
+                            Brand = "HP",
+                            CPU = "Intel i5",
                             ComputerId = 2,
                             DonationId = 1,
                             Quantity = 1,
@@ -197,6 +201,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         new
                         {
                             Id = 3,
+                            Brand = "Lenovo",
+                            CPU = "Intel i9",
                             ComputerId = 3,
                             DonationId = 2,
                             Quantity = 3,
@@ -205,6 +211,7 @@ namespace RoboticaSustentavelAPI.Migrations
                         new
                         {
                             Id = 4,
+                            CPU = "AMD Ryzen 5",
                             ComputerId = 4,
                             DonationId = 3,
                             Quantity = 1,
@@ -213,6 +220,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         new
                         {
                             Id = 5,
+                            Brand = "Asus",
+                            CPU = "AMD Ryzen 7",
                             ComputerId = 5,
                             DonationId = 3,
                             Quantity = 2,
@@ -258,6 +267,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         new
                         {
                             Id = 1,
+                            Brand = "Dell",
+                            CPU = "Intel i7",
                             ComputerId = 1,
                             Quantity = 1,
                             SaleId = 1,
@@ -266,6 +277,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         new
                         {
                             Id = 2,
+                            Brand = "HP",
+                            CPU = "Intel i5",
                             ComputerId = 2,
                             Quantity = 1,
                             SaleId = 1,
@@ -274,6 +287,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         new
                         {
                             Id = 3,
+                            Brand = "Lenovo",
+                            CPU = "Intel i9",
                             ComputerId = 3,
                             Quantity = 1,
                             SaleId = 2,
@@ -319,7 +334,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensDonation")
                         .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Donation", "Donation")
                         .WithMany("ItensDonations")
@@ -337,7 +352,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensSales")
                         .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Sale", "Sale")
                         .WithMany("ItensSales")

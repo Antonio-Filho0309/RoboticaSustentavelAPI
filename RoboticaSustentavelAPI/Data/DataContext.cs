@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RoboticaSustentavelAPI.Models;
+using RoboticaSustentavelAPI.Models.Enum;
 
 namespace ProjetoLivrariaAPI.Data
 {
@@ -55,11 +56,11 @@ namespace ProjetoLivrariaAPI.Data
 
             // Dados iniciais de ItemDonation
             builder.Entity<ItemDonation>().HasData(
-                new ItemDonation(1, 1, 1, 2),
-                new ItemDonation(2, 2, 1, 1),
-                new ItemDonation(3, 3, 2, 3),
-                new ItemDonation(4, 4, 3, 1),
-                new ItemDonation(5, 5, 3, 2)
+                new ItemDonation(1, 1, 1, "Dell", "Intel i7", 2),
+                new ItemDonation(2, 2, 1, "HP", "Intel i5", 1),
+                new ItemDonation(3, 3, 2, "Lenovo", "Intel i9", 3),
+                new ItemDonation(4, 4, 3, null, "AMD Ryzen 5", 1),
+                new ItemDonation(5, 5, 3, "Asus", "AMD Ryzen 7", 2)
             );
 
             // Dados iniciais de Sale
@@ -70,9 +71,9 @@ namespace ProjetoLivrariaAPI.Data
 
             // Dados iniciais de ItemSale
             builder.Entity<ItemSale>().HasData(
-                new ItemSale(1, 1, 1, 1),
-                new ItemSale(2, 2, 1, 1),
-                new ItemSale(3, 3, 2, 1)
+                new ItemSale(1, 1, 1, "Dell", "Intel i7", 1),
+                new ItemSale(2, 2, 1, "HP", "Intel i5", 1),
+                new ItemSale(3, 3, 2, "Lenovo", "Intel i9", 1)
             );
         }
     }

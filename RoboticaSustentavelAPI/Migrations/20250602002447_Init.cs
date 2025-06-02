@@ -79,8 +79,7 @@ namespace RoboticaSustentavelAPI.Migrations
                         name: "FK_ItemDonations_Computers_ComputerId",
                         column: x => x.ComputerId,
                         principalTable: "Computers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ItemDonations_Donations_DonationId",
                         column: x => x.DonationId,
@@ -109,8 +108,7 @@ namespace RoboticaSustentavelAPI.Migrations
                         name: "FK_ItemSales_Computers_ComputerId",
                         column: x => x.ComputerId,
                         principalTable: "Computers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ItemSales_Sales_SaleId",
                         column: x => x.SaleId,
@@ -155,11 +153,11 @@ namespace RoboticaSustentavelAPI.Migrations
                 columns: new[] { "Id", "Brand", "CPU", "ComputerId", "DonationId", "Quantity", "Status" },
                 values: new object[,]
                 {
-                    { 1, null, null, 1, 1, 2, 1 },
-                    { 2, null, null, 2, 1, 1, 1 },
-                    { 3, null, null, 3, 2, 3, 1 },
-                    { 4, null, null, 4, 3, 1, 1 },
-                    { 5, null, null, 5, 3, 2, 1 }
+                    { 1, "Dell", "Intel i7", 1, 1, 2, 1 },
+                    { 2, "HP", "Intel i5", 2, 1, 1, 1 },
+                    { 3, "Lenovo", "Intel i9", 3, 2, 3, 1 },
+                    { 4, null, "AMD Ryzen 5", 4, 3, 1, 1 },
+                    { 5, "Asus", "AMD Ryzen 7", 5, 3, 2, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -167,9 +165,9 @@ namespace RoboticaSustentavelAPI.Migrations
                 columns: new[] { "Id", "Brand", "CPU", "ComputerId", "Quantity", "SaleId", "Status" },
                 values: new object[,]
                 {
-                    { 1, null, null, 1, 1, 1, 2 },
-                    { 2, null, null, 2, 1, 1, 2 },
-                    { 3, null, null, 3, 1, 2, 2 }
+                    { 1, "Dell", "Intel i7", 1, 1, 1, 2 },
+                    { 2, "HP", "Intel i5", 2, 1, 1, 2 },
+                    { 3, "Lenovo", "Intel i9", 3, 1, 2, 2 }
                 });
 
             migrationBuilder.CreateIndex(

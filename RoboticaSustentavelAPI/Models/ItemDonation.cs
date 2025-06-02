@@ -16,6 +16,17 @@ namespace RoboticaSustentavelAPI.Models
             Status = StatusComputer.doado;
         }
 
+        public ItemDonation(int id, int? computerId, int donationId, string? brand, string? cPU,  int quantity)
+        {
+            Id = id;
+            ComputerId = computerId;
+            DonationId = donationId;
+            Brand = brand;
+            CPU = cPU;
+            Quantity = quantity;
+            Status = StatusComputer.doado;
+        }
+
         public int Id { get; set; }
         public int? ComputerId { get; set; }
         public Computer Computer { get; set; }
