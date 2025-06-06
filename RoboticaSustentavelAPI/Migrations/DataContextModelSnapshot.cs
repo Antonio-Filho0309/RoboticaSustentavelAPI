@@ -54,57 +54,6 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Computers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Brand = "Dell",
-                            CPU = "Intel i7",
-                            Quantity = 10,
-                            Ram = "16GB",
-                            Status = 0,
-                            Storage = "512GB SSD"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Brand = "HP",
-                            CPU = "Intel i5",
-                            Quantity = 5,
-                            Ram = "8GB",
-                            Status = 0,
-                            Storage = "1TB HDD"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Brand = "Lenovo",
-                            CPU = "Intel i9",
-                            Quantity = 3,
-                            Ram = "32GB",
-                            Status = 0,
-                            Storage = "1TB SSD"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CPU = "AMD Ryzen 5",
-                            Quantity = 8,
-                            Ram = "16GB",
-                            Status = 0,
-                            Storage = "256GB SSD"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Brand = "Asus",
-                            CPU = "AMD Ryzen 7",
-                            Quantity = 4,
-                            Ram = "32GB",
-                            Status = 0,
-                            Storage = "2TB HDD"
-                        });
                 });
 
             modelBuilder.Entity("RoboticaSustentavelAPI.Models.Donation", b =>
@@ -116,28 +65,11 @@ namespace RoboticaSustentavelAPI.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateDonation")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
                     b.ToTable("Donations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DateDonation = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DateDonation = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DateDonation = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RoboticaSustentavelAPI.Models.ItemDonation", b =>
@@ -173,57 +105,6 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasIndex("DonationId");
 
                     b.ToTable("ItemDonations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Brand = "Dell",
-                            CPU = "Intel i7",
-                            ComputerId = 1,
-                            DonationId = 1,
-                            Quantity = 2,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Brand = "HP",
-                            CPU = "Intel i5",
-                            ComputerId = 2,
-                            DonationId = 1,
-                            Quantity = 1,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Brand = "Lenovo",
-                            CPU = "Intel i9",
-                            ComputerId = 3,
-                            DonationId = 2,
-                            Quantity = 3,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CPU = "AMD Ryzen 5",
-                            ComputerId = 4,
-                            DonationId = 3,
-                            Quantity = 1,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Brand = "Asus",
-                            CPU = "AMD Ryzen 7",
-                            ComputerId = 5,
-                            DonationId = 3,
-                            Quantity = 2,
-                            Status = 1
-                        });
                 });
 
             modelBuilder.Entity("RoboticaSustentavelAPI.Models.ItemSale", b =>
@@ -259,38 +140,6 @@ namespace RoboticaSustentavelAPI.Migrations
                     b.HasIndex("SaleId");
 
                     b.ToTable("ItemSales");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Brand = "Dell",
-                            CPU = "Intel i7",
-                            ComputerId = 1,
-                            Quantity = 1,
-                            SaleId = 1,
-                            Status = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Brand = "HP",
-                            CPU = "Intel i5",
-                            ComputerId = 2,
-                            Quantity = 1,
-                            SaleId = 1,
-                            Status = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Brand = "Lenovo",
-                            CPU = "Intel i9",
-                            ComputerId = 3,
-                            Quantity = 1,
-                            SaleId = 2,
-                            Status = 2
-                        });
                 });
 
             modelBuilder.Entity("RoboticaSustentavelAPI.Models.Sale", b =>
@@ -305,33 +154,18 @@ namespace RoboticaSustentavelAPI.Migrations
                         .HasColumnType("double precision");
 
                     b.Property<DateTime>("SaleDate")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
                     b.ToTable("Sales");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            PriceSale = 1500.0,
-                            SaleDate = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            PriceSale = 2000.0,
-                            SaleDate = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("RoboticaSustentavelAPI.Models.ItemDonation", b =>
                 {
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensDonation")
-                        .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("ComputerId");
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Donation", "Donation")
                         .WithMany("ItensDonations")
@@ -348,8 +182,7 @@ namespace RoboticaSustentavelAPI.Migrations
                 {
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensSales")
-                        .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("ComputerId");
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Sale", "Sale")
                         .WithMany("ItensSales")

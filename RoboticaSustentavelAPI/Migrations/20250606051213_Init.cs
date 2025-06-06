@@ -4,8 +4,6 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace RoboticaSustentavelAPI.Migrations
 {
     /// <inheritdoc />
@@ -38,7 +36,7 @@ namespace RoboticaSustentavelAPI.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    DateDonation = table.Column<DateTime>(type: "timestamp", nullable: false)
+                    DateDonation = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,7 +49,7 @@ namespace RoboticaSustentavelAPI.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    SaleDate = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    SaleDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     PriceSale = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
@@ -79,8 +77,7 @@ namespace RoboticaSustentavelAPI.Migrations
                         name: "FK_ItemDonations_Computers_ComputerId",
                         column: x => x.ComputerId,
                         principalTable: "Computers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ItemDonations_Donations_DonationId",
                         column: x => x.DonationId,
@@ -109,67 +106,13 @@ namespace RoboticaSustentavelAPI.Migrations
                         name: "FK_ItemSales_Computers_ComputerId",
                         column: x => x.ComputerId,
                         principalTable: "Computers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ItemSales_Sales_SaleId",
                         column: x => x.SaleId,
                         principalTable: "Sales",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Computers",
-                columns: new[] { "Id", "Brand", "CPU", "Quantity", "Ram", "Status", "Storage" },
-                values: new object[,]
-                {
-                    { 1, "Dell", "Intel i7", 10, "16GB", 0, "512GB SSD" },
-                    { 2, "HP", "Intel i5", 5, "8GB", 0, "1TB HDD" },
-                    { 3, "Lenovo", "Intel i9", 3, "32GB", 0, "1TB SSD" },
-                    { 4, null, "AMD Ryzen 5", 8, "16GB", 0, "256GB SSD" },
-                    { 5, "Asus", "AMD Ryzen 7", 4, "32GB", 0, "2TB HDD" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Donations",
-                columns: new[] { "Id", "DateDonation" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Sales",
-                columns: new[] { "Id", "PriceSale", "SaleDate" },
-                values: new object[,]
-                {
-                    { 1, 1500.0, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, 2000.0, new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ItemDonations",
-                columns: new[] { "Id", "Brand", "CPU", "ComputerId", "DonationId", "Quantity", "Status" },
-                values: new object[,]
-                {
-                    { 1, "Dell", "Intel i7", 1, 1, 2, 1 },
-                    { 2, "HP", "Intel i5", 2, 1, 1, 1 },
-                    { 3, "Lenovo", "Intel i9", 3, 2, 3, 1 },
-                    { 4, null, "AMD Ryzen 5", 4, 3, 1, 1 },
-                    { 5, "Asus", "AMD Ryzen 7", 5, 3, 2, 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ItemSales",
-                columns: new[] { "Id", "Brand", "CPU", "ComputerId", "Quantity", "SaleId", "Status" },
-                values: new object[,]
-                {
-                    { 1, "Dell", "Intel i7", 1, 1, 1, 2 },
-                    { 2, "HP", "Intel i5", 2, 1, 1, 2 },
-                    { 3, "Lenovo", "Intel i9", 3, 1, 2, 2 }
                 });
 
             migrationBuilder.CreateIndex(
