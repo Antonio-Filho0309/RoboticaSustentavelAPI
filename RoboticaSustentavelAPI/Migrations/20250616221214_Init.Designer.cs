@@ -12,7 +12,7 @@ using ProjetoLivrariaAPI.Data;
 namespace RoboticaSustentavelAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250606051213_Init")]
+    [Migration("20250616221214_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -68,7 +68,7 @@ namespace RoboticaSustentavelAPI.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateDonation")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.HasKey("Id");
 
@@ -157,7 +157,7 @@ namespace RoboticaSustentavelAPI.Migrations
                         .HasColumnType("double precision");
 
                     b.Property<DateTime>("SaleDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
                     b.HasKey("Id");
 
@@ -168,7 +168,8 @@ namespace RoboticaSustentavelAPI.Migrations
                 {
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensDonation")
-                        .HasForeignKey("ComputerId");
+                        .HasForeignKey("ComputerId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Donation", "Donation")
                         .WithMany("ItensDonations")
@@ -185,7 +186,8 @@ namespace RoboticaSustentavelAPI.Migrations
                 {
                     b.HasOne("RoboticaSustentavelAPI.Models.Computer", "Computer")
                         .WithMany("ItensSales")
-                        .HasForeignKey("ComputerId");
+                        .HasForeignKey("ComputerId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RoboticaSustentavelAPI.Models.Sale", "Sale")
                         .WithMany("ItensSales")

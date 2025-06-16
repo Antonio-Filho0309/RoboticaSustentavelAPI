@@ -36,7 +36,7 @@ namespace RoboticaSustentavelAPI.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    DateDonation = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    DateDonation = table.Column<DateTime>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,7 +49,7 @@ namespace RoboticaSustentavelAPI.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    SaleDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    SaleDate = table.Column<DateTime>(type: "timestamp", nullable: false),
                     PriceSale = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
@@ -77,7 +77,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         name: "FK_ItemDonations_Computers_ComputerId",
                         column: x => x.ComputerId,
                         principalTable: "Computers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_ItemDonations_Donations_DonationId",
                         column: x => x.DonationId,
@@ -106,7 +107,8 @@ namespace RoboticaSustentavelAPI.Migrations
                         name: "FK_ItemSales_Computers_ComputerId",
                         column: x => x.ComputerId,
                         principalTable: "Computers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_ItemSales_Sales_SaleId",
                         column: x => x.SaleId,
